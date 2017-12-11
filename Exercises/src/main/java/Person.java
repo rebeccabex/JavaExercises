@@ -20,11 +20,14 @@ public class Person {
     public String toString() {
 
         String personString = "Name: " + name;
-        personString += "\nAge: " + age;
-        personString += "\nJob title: " + jobTitle;
+        personString += "; ";
+        personString += "Age: " + age;
+        personString += "; ";
+        personString += "Job title: " + jobTitle;
 
         return personString;
 
     }
+
 
 }

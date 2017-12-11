@@ -29,7 +29,7 @@ public class FileWorker {
 
     public void writeToFile(Person person) {
 
-        String filename = "C:\\Users\\Admin\\IdeaProjects\\BasicExercises" + person.getName();
+        String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + person.getName() + ".txt";
 
         BufferedWriter bw = null;
         FileWriter fw = null;
