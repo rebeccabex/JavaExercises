@@ -88,39 +88,26 @@ public class IntermediateExercises {
 
         System.out.println("\nPeople Exercises");
 
+        PeopleManager peopleManager = new PeopleManager();
+
         Person person1 = new Person("Alice", 25, "Software Engineer");
         Person person2 = new Person("Bob", 30, "Tester");
         Person person3 = new Person("Charlie", 35, "Senior Software Engineer");
 
-        ArrayList<Person> PeopleList = new ArrayList<Person>();
+        peopleManager.addPerson(person1);
+        peopleManager.addPerson(person2);
+        peopleManager.addPerson(person3);
 
-        PeopleList.add(person1);
-        PeopleList.add(person2);
-        PeopleList.add(person3);
+        ArrayList<Person> personList = peopleManager.getPersonList();
 
-        for (Person p : PeopleList) {
-            System.out.println(p.toString());
+        for (Person p : personList) {
+            System.out.println(p);
         }
 
-        Person found = peopleSearch(PeopleList, "Alice");
+        Person found = peopleManager.searchByName("Alice");
         if (found != null) {
             System.out.println(found.toString());
         }
-
-    }
-
-    private Person peopleSearch(ArrayList<Person> PeopleList, String name) {
-
-        name = name.toLowerCase();
-
-        for (Person p : PeopleList) {
-            if (p.getName().toLowerCase().equals(name)) {
-                return p;
-            }
-        }
-
-        System.out.println("Person not found");
-        return null;
 
     }
 

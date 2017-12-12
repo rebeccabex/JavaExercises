@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6904f7a6-754a-4e93-971c-947311e1caaf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Car.class" afterPath="$PROJECT_DIR$/target/classes/Car.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/FileWorker.class" afterPath="$PROJECT_DIR$/target/classes/FileWorker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Garage.class" afterPath="$PROJECT_DIR$/target/classes/Garage.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/IntermediateExercises.class" afterPath="$PROJECT_DIR$/target/classes/IntermediateExercises.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Motorcycle.class" afterPath="$PROJECT_DIR$/target/classes/Motorcycle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Person.class" afterPath="$PROJECT_DIR$/target/classes/Person.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Van.class" afterPath="$PROJECT_DIR$/target/classes/Van.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Vehicle.class" afterPath="$PROJECT_DIR$/target/classes/Vehicle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BasicExercises.iml" afterPath="$PROJECT_DIR$/BasicExercises.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Car.java" afterPath="$PROJECT_DIR$/src/main/java/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/FileWorker.java" afterPath="$PROJECT_DIR$/src/main/java/FileWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Garage.java" afterPath="$PROJECT_DIR$/src/main/java/Garage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Motorcycle.java" afterPath="$PROJECT_DIR$/src/main/java/Motorcycle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Person.java" afterPath="$PROJECT_DIR$/src/main/java/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Van.java" afterPath="$PROJECT_DIR$/src/main/java/Van.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Vehicle.java" afterPath="$PROJECT_DIR$/src/main/java/Vehicle.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntermediateExercises.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IntermediateExercises.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="157" column="5" lean-forward="true" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
+            <state relative-caret-position="425">
+              <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,54 +49,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Garage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Garage.java">
+      <file leaf-file-name="PeopleManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/PeopleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="94" column="20" lean-forward="true" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+            <state relative-caret-position="459">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
-                <element signature="e#653#662#0" expanded="true" />
+                <element signature="e#115#123#0" expanded="true" />
+                <element signature="e#172#173#0" expanded="true" />
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#521#522#0" expanded="true" />
+                <element signature="e#554#555#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vehicle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Vehicle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Car.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Car.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="34" lean-forward="true" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Motorcycle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Motorcycle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Van.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Van.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -153,9 +101,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Vehicle.java" />
         <option value="$PROJECT_DIR$/src/main/java/Garage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Van.java" />
-        <option value="$PROJECT_DIR$/src/main/java/IntermediateExercises.java" />
         <option value="$PROJECT_DIR$/src/main/java/Car.java" />
         <option value="$PROJECT_DIR$/src/main/java/Motorcycle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PeopleManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/IntermediateExercises.java" />
       </list>
     </option>
   </component>
@@ -409,7 +358,7 @@
       <updated>1512993142113</updated>
       <workItem from="1512993144686" duration="15563000" />
       <workItem from="1513012381101" duration="734000" />
-      <workItem from="1513069175348" duration="9916000" />
+      <workItem from="1513069175348" duration="10547000" />
     </task>
     <servers />
   </component>
@@ -431,7 +380,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26213000" />
+    <option name="totallyTimeSpent" value="26844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -646,20 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding>
-            <element signature="e#272#273#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
@@ -712,10 +647,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="157" column="5" lean-forward="true" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
+        <state relative-caret-position="425">
+          <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="31" column="25" lean-forward="true" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="e#632#633#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PeopleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#115#123#0" expanded="true" />
+            <element signature="e#172#173#0" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
           </folding>
         </state>
       </provider>
