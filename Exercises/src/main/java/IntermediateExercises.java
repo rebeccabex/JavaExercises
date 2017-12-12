@@ -7,18 +7,11 @@ public class IntermediateExercises {
 
         IntermediateExercises intermediateExercises = new IntermediateExercises();
 
-        System.out.println(intermediateExercises.blackjackEx(18, 21));
-        System.out.println(intermediateExercises.blackjackEx(20, 18));
-        System.out.println(intermediateExercises.blackjackEx(22, 22));
+        intermediateExercises.blackjackEx();
 
-        System.out.println(intermediateExercises.uniqueSumEx(1, 2, 3));
-        System.out.println(intermediateExercises.uniqueSumEx(3, 3, 3));
-        System.out.println(intermediateExercises.uniqueSumEx(1, 1, 2));
+        intermediateExercises.uniqueSumEx();
 
-        System.out.println(intermediateExercises.tooHotEx(70, false));
-        System.out.println(intermediateExercises.tooHotEx(100, false));
-        System.out.println(intermediateExercises.tooHotEx(100, true));
-        System.out.println(intermediateExercises.tooHotEx(50, true));
+        intermediateExercises.tooHotEx();
 
         intermediateExercises.peopleEx();
 
@@ -30,57 +23,34 @@ public class IntermediateExercises {
 
     }
 
-    public int blackjackEx(int x, int y) {
+    public void blackjackEx() {
 
-        if (x > 21) {
-            if (y > 21) {
-                return 0;
-            } else {
-                return y;
-            }
-        } else if (y > 21) {
-            return x;
-        } else if (x > y) {
-            return x;
-        } else {
-            return y;
-        }
+        Blackjack blackjack = new Blackjack();
+
+        System.out.println(blackjack.compareHands(18, 21));
+        System.out.println(blackjack.compareHands(20, 18));
+        System.out.println(blackjack.compareHands(22, 22));
 
     }
 
-    public int uniqueSumEx(int x, int y, int z) {
+    public void uniqueSumEx() {
 
-        int sum = 0;
+        UniqueSum uniqueSum = new UniqueSum();
 
-        if (x != y) {
-            if (x != z) {
-                sum += x;
-                if (y != z) {
-                    sum += y;
-                    sum += z;
-                }
-            } else if (y != z) {
-                sum += y;
-            }
-        } else if (y != z) {
-            sum += z;
-        }
-
-        return sum;
+        System.out.println(uniqueSum.calculateUniqueSum(1, 2, 3));
+        System.out.println(uniqueSum.calculateUniqueSum(3, 3, 3));
+        System.out.println(uniqueSum.calculateUniqueSum(1, 1, 2));
 
     }
 
-    public boolean tooHotEx(int temperature, boolean isSummer) {
+    public void tooHotEx() {
 
-        if (isSummer) {
-            if (temperature >= 60 && temperature <= 100) {
-                return true;
-            }
-        } else if (temperature >= 60 && temperature <= 90) {
-                return true;
-        }
+        TemperatureChecker temperatureChecker = new TemperatureChecker();
 
-        return false;
+        System.out.println(temperatureChecker.isTempGood(70, false));
+        System.out.println(temperatureChecker.isTempGood(100, false));
+        System.out.println(temperatureChecker.isTempGood(100, true));
+        System.out.println(temperatureChecker.isTempGood(50, true));
 
     }
 
