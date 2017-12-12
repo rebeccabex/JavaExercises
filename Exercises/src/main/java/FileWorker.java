@@ -143,17 +143,4 @@ public class FileWorker {
 
     }
 
-    private void closeBuffered(Closeable c) {
-        try {
-            if (c != null) {
-                c.close();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-//    public ArrayList
-
-
 }

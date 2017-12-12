@@ -2,9 +2,16 @@ public class Van extends Vehicle {
 
     private int capacity;
 
-    Van(int id, String colour, int capacity) {
+    Van(String registration, String colour, int capacity, int mileage) {
 
-        super("van", id,4, colour);
+        super(registration,4, colour);
+        this.capacity = capacity;
+
+    }
+
+    Van(String registration, String colour, int capacity) {
+
+        super(registration,4, colour);
         this.capacity = capacity;
 
     }

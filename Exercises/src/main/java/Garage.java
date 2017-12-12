@@ -14,35 +14,56 @@ public class Garage {
         garage.add(newVehicle);
     }
 
-    public Vehicle findVehicleById(int vehicleId) {
+    public Vehicle findVehicleByReg(String vehicleReg) {
 
         for (Vehicle v : garage) {
-            if (v.getId() == vehicleId) {
+            if (v.getRegistration().equals(vehicleReg)) {
                 return v;
             }
         }
 
-        System.out.println("Vehicle ID not found");
         return null;
 
     }
 
-    public String getVehicleType(int vehicleId) {
+    public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
+
+        vehicleType = vehicleType.toLowerCase();
+
+        ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
+
+        for (Vehicle v : garage) {
+            if(getVehicleType(v).toLowerCase().equals(vehicleType)) {
+                vehicleList.add(v);
+            }
+        }
+
+        return vehicleList;
+    }
+
+    public String getVehicleType(String vehicleReg) {
+
+        Vehicle v = findVehicleByReg(vehicleReg);
+        return getVehicleType(v);
+
+    }
+
+    public String getVehicleType(Vehicle v) {
 
         String vehicleType = "";
 
-        Vehicle v = findVehicleById(vehicleId);
         if (v != null) {
-            vehicleType = v.getVehicleType();
+            Class vClass = v.getClass();
+            vehicleType = vClass.getSimpleName().toLowerCase();
         }
 
         return vehicleType;
 
     }
 
-    public void removeVehicleById(int vehicleId) {
+    public void removeVehicleByReg(String vehicleReg) {
 
-       Vehicle v = findVehicleById(vehicleId);
+       Vehicle v = findVehicleByReg(vehicleReg);
 
        if (v != null) {
            garage.remove(v);
@@ -52,23 +73,13 @@ public class Garage {
 
     public void removeVehicleByType(String vehicleType) {
 
-        vehicleType = vehicleType.toLowerCase();
-
-        ArrayList<Vehicle> removeList = new ArrayList<Vehicle>();
-
-        for (Vehicle v : garage) {
-            if (v.getVehicleType().equals(vehicleType)) {
-                removeList.add(v);
-            }
-        }
-
-        garage.removeAll(removeList);
+        garage.removeAll(getVehiclesByType(vehicleType));
 
     }
 
-    public int fixVehicle(int vehicleId) {
+    public int fixVehicle(String vehicleReg) {
 
-        Vehicle v = findVehicleById(vehicleId);
+        Vehicle v = findVehicleByReg(vehicleReg);
 
         return v.calculateBill();
 

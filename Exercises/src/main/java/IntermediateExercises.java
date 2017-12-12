@@ -30,7 +30,7 @@ public class IntermediateExercises {
 
     }
 
-    private int blackjackEx(int x, int y) {
+    public int blackjackEx(int x, int y) {
 
         if (x > 21) {
             if (y > 21) {
@@ -48,7 +48,7 @@ public class IntermediateExercises {
 
     }
 
-    private int uniqueSumEx(int x, int y, int z) {
+    public int uniqueSumEx(int x, int y, int z) {
 
         int sum = 0;
 
@@ -70,7 +70,7 @@ public class IntermediateExercises {
 
     }
 
-    private boolean tooHotEx(int temperature, boolean isSummer) {
+    public boolean tooHotEx(int temperature, boolean isSummer) {
 
         if (isSummer) {
             if (temperature >= 60 && temperature <= 100) {
@@ -129,27 +129,28 @@ public class IntermediateExercises {
         System.out.println("\nGarage Exercises");
 
         Garage myGarage = new Garage();
-        Car newCar = new Car(1, "red", 2);
-        Motorcycle newMotorcycle = new Motorcycle(2, "black", false);
-        Van newVan = new Van(3, "white", 1000);
-        Car newCar2 = new Car(4, "blue", 5);
+        Car newCar = new Car("ABC123", "red", 2);
+        Motorcycle newMotorcycle = new Motorcycle("DEF456", "black", false);
+        Van newVan = new Van("GHJ789", "white", 1000);
+        Car newCar2 = new Car("KLM012", "blue", 5, 50000, 3);
+        Car newCar3 = new Car("NPQ345", "blue", 5, 70000);
 
         myGarage.addVehicle(newCar);
         myGarage.addVehicle(newMotorcycle);
         myGarage.addVehicle(newVan);
         myGarage.addVehicle(newCar2);
 
-        System.out.println(myGarage.fixVehicle(3));
+        System.out.println(myGarage.fixVehicle("GHJ789"));
         System.out.println(Arrays.toString(myGarage.calculateBillAll()));
 
-        myGarage.removeVehicleById(3);
+        myGarage.removeVehicleByReg("GHJ789");
         System.out.println(Arrays.toString(myGarage.calculateBillAll()));
 
         myGarage.removeVehicleByType("car");
         System.out.println(Arrays.toString(myGarage.calculateBillAll()));
 
         myGarage.addVehicle(newVan);
-        myGarage.addVehicle(newCar2);
+        myGarage.addVehicle(newCar3);
         System.out.println(Arrays.toString(myGarage.calculateBillAll()));
 
         myGarage.emptyGarage();

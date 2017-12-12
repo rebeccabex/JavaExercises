@@ -1,31 +1,31 @@
-public class Vehicle {
+public abstract class Vehicle {
 
-    protected String vehicleType;
-    protected int id;
+    protected String registration;
     protected int wheels;
     protected String colour;
 
     protected int mileage;
     protected int repairCost;
 
-    Vehicle(String vehicleType, int id, int wheels, String colour) {
+    Vehicle(String registration, int wheels, String colour, int mileage) {
 
-        this.vehicleType = vehicleType;
-        this.id = id;
+        this.registration = registration;
         this.wheels = wheels;
         this.colour = colour;
 
-        mileage = 10000;
+        this.mileage = mileage;
         repairCost = 0;
 
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    Vehicle(String registration, int wheels, String colour) {
+
+        this(registration, wheels, colour, 10000);
+
     }
 
-    public int getId() {
-        return id;
+    public String getRegistration() {
+        return registration;
     }
 
     public int getMileage() {
@@ -36,11 +36,7 @@ public class Vehicle {
         this.repairCost = repairCost;
     }
 
-    public int calculateBill() {
-
-        return mileage/1000;
-
-    }
+    public abstract int calculateBill();
 
 
 }

@@ -2,9 +2,16 @@ public class Motorcycle extends Vehicle {
 
     private boolean sidecar;
 
-    Motorcycle(int id, String colour, boolean sidecar) {
+    Motorcycle(String registration, String colour, boolean sidecar, int mileage) {
 
-        super("motorcycle", id,2, colour);
+        super(registration,2, colour, mileage);
+        this.sidecar = sidecar;
+
+    }
+
+    Motorcycle(String registration, String colour, boolean sidecar) {
+
+        super(registration,2, colour);
         this.sidecar = sidecar;
 
     }
@@ -12,7 +19,7 @@ public class Motorcycle extends Vehicle {
     @Override
     public int calculateBill() {
 
-        return 40+ mileage/1000;
+        return 40 + mileage/1000;
 
     }
 
