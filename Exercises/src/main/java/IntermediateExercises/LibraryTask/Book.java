@@ -1,20 +1,82 @@
 package IntermediateExercises.LibraryTask;
 
-public class Book extends Resource {
+public class Book extends Resource implements Borrowable {
 
+    private int yearPublished;
+    private String author;
+    private boolean available;
+    private int loanLength;
+
+    public Book(int id, String name, int yearPublished, String author) {
+
+        super(id, name);
+
+        this.yearPublished = yearPublished;
+        this.author = author;
+        available = true;
+        loanLength = 21;
+
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getYearPublished() {
+
+        return yearPublished;
+    }
+
+    public int getLoanLength() {
+        return loanLength;
+    }
+
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setLoanLength(int loanLength) {
+        this.loanLength = loanLength;
+    }
 
     @Override
-    public void add(int id, String name) {
+    public void update(String fieldName, String newData) {
+
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                setName(newData);
+                break;
+            case "author":
+                setAuthor(newData);
+                break;
+            case "yearpublished":
+            case "year published":
+                setYearPublished(Integer.parseInt(newData));
+                break;
+            default:
+                System.out.println("Field " + fieldName + " does not exist in " + getName());
+        }
 
     }
 
     @Override
-    public void update(int id, String fieldName, String newData) {
-
+    public boolean isAvailable() {
+        return available;
     }
 
     @Override
-    public void delete(int id) {
+    public int borrowItem(int currentDate) {
+
+        if(isAvailable()) {
+            available = false;
+            return currentDate + loanLength;
+        } else {
+            return -1;
+        }
 
     }
 
