@@ -8,10 +8,22 @@ public class Map {
     private int maxY;
     private Player player;
     private Item treasure;
+    private RandomGenerator rg;
+    private ArrayList<Item> decoyList;
 
     private int[][] grid;
 
-    public Map(int x, int y) {
+    public Map(Settings settings) {
+
+        rg = new RandomGenerator();
+        initialiseGrid(settings.getSizeX(), settings.getSizeY());
+        initialisePlayer();
+        initialiseItems(settings.getDecoyTreasures());
+
+    }
+
+
+    public void initialiseGrid(int x, int y) {
 
         maxX = x;
         maxY = y;
@@ -24,25 +36,39 @@ public class Map {
             }
         }
 
-        RandomGenerator rg = new RandomGenerator();
+    }
+
+    public void initialisePlayer() {
+
         int playerX = rg.getRandomInt(maxX);
         int playerY = rg.getRandomInt(maxY);
 
         placePlayerOnSquare(playerX, playerY);
 
-        grid[playerX][playerY] = 1;
+    }
 
-        int treasureX = 0;
-        int treasureY = 0;
+    public void initialiseItems(int noOfDecoys) {
+
+        decoyList = new ArrayList<Item>();
+
+        int itemX = 0;
+        int itemY = 0;
 
         do {
-            treasureX = rg.getRandomInt(maxX);
-            treasureY = rg.getRandomInt(maxY);
-        } while (treasureX == playerX && treasureY == playerY);
+            itemX = rg.getRandomInt(maxX);
+            itemY = rg.getRandomInt(maxY);
+        } while (grid[itemX][itemY] != 0);
 
-        placeTreasureOnSquare(treasureX, treasureY);
+        placeTreasureOnSquare(itemX, itemY);
 
-        grid[treasureX][treasureY] = 2;
+        for (int i = 0; i < noOfDecoys; i++) {
+            do {
+                itemX = rg.getRandomInt(maxX);
+                itemY = rg.getRandomInt(maxY);
+            } while (grid[itemX][itemY] != 0);
+
+            placeDecoyOnSquare(itemX, itemY);
+        }
 
     }
 
@@ -61,64 +87,91 @@ public class Map {
         treasure = new Item("Treasure", x, y);
     }
 
+    public void placeDecoyOnSquare(int x, int y) {
+        placeItemOnSquare(x, y, 3);
+        Item decoy = new Item("Decoy", x, y);
+        decoyList.add(decoy);
+    }
+
+    public int foundItem(int x, int y) {
+        return grid[x][y];
+    }
+
     public boolean foundTreasure(int x, int y) {
         return grid[x][y] == 2;
     }
 
-    public int movePlayerNorth() {
-        if (getPlayerY() < getMaxY()-1) {
-            if(foundTreasure(getPlayerX(), getPlayerY() + 1)) {
-                return 2;
+    public boolean foundDecoy(int x, int y) {
+        return grid[x][y] == 3;
+    }
+
+    public int movePlayer(int deltaX, int deltaY) {
+
+        int moveCode = 0;
+
+        int item = foundItem(getPlayerX() + deltaX, getPlayerY() + deltaY);
+
+        if (item > 1) {
+            moveCode = item;
+            if (item == 3) {
+                removeFoundDecoy(getPlayerX() + deltaX, getPlayerY() + deltaY);
             }
-            grid[getPlayerX()][getPlayerY()+1] = 1;
-            grid[getPlayerX()][getPlayerY()] = 0;
-            player.moveNorth();
-            return 1;
         } else {
-            return 0;
+            moveCode = 1;
         }
+
+        grid[getPlayerX() + deltaX][getPlayerY() + deltaY] = 1;
+        grid[getPlayerX()][getPlayerY()] = 0;
+
+        return moveCode;
+    }
+
+    public int movePlayerNorth() {
+
+        int moveCode = 0;
+
+        if (getPlayerY() < getMaxY()-1) {
+            moveCode = movePlayer(0, 1);
+            player.moveNorth();
+        }
+
+        return moveCode;
     }
 
     public int movePlayerSouth() {
+
+        int moveCode = 0;
+
         if (getPlayerY() > 0) {
-            if(foundTreasure(getPlayerX(), getPlayerY() - 1)) {
-                return 2;
-            }
-            grid[getPlayerX()][getPlayerY()-1] = 1;
-            grid[getPlayerX()][getPlayerY()] = 0;
+            moveCode = movePlayer(0, -1);
             player.moveSouth();
-            return 1;
-        } else {
-            return 0;
         }
+
+        return moveCode;
     }
 
     public int movePlayerEast() {
+
+        int moveCode = 0;
+
         if (getPlayerX() < getMaxX()-1) {
-            if(foundTreasure(getPlayerX() + 1, getPlayerY())) {
-                return 2;
-            }
-            grid[getPlayerX()+1][getPlayerY()] = 1;
-            grid[getPlayerX()][getPlayerY()] = 0;
+            moveCode = movePlayer(1, 0);
             player.moveEast();
-            return 1;
-        } else {
-            return 0;
         }
+
+        return moveCode;
     }
 
     public int movePlayerWest() {
+
+        int moveCode = 0;
+
         if (getPlayerX() > 0) {
-            if(foundTreasure(getPlayerX() - 1, getPlayerY())) {
-                return 2;
-            }
-            grid[getPlayerX()-1][getPlayerY()] = 1;
-            grid[getPlayerX()][getPlayerY()] = 0;
+            moveCode = movePlayer(-1, 0);
             player.moveWest();
-            return 1;
-        } else {
-            return 0;
         }
+
+        return moveCode;
     }
 
     public int getSquare(int x, int y) {
@@ -141,13 +194,37 @@ public class Map {
         return treasure.getyCoordinate();
     }
 
-    public int distanceFromTreasure() {
+    public double distanceToClosestItem() {
+
+        double min = distanceFromTreasure();
+
+        for (Item i : decoyList) {
+            int xDist = Math.abs(getPlayerX() - i.getxCoordinate());
+            int yDist = Math.abs(getPlayerY() - i.getyCoordinate());
+
+            double dist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+
+            if(dist < min) {
+                min = dist;
+            }
+
+        }
+
+        return roundDouble(min, 1);
+    }
+
+    public double distanceFromTreasure() {
 
         int xDist = Math.abs(getPlayerX() - getTreasureX());
         int yDist = Math.abs(getPlayerY() - getTreasureY());
 
-        return (int) Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+        return Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
 
+    }
+
+    public double roundDouble(double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 
     public int getMaxX() {
@@ -158,8 +235,23 @@ public class Map {
         return grid[0].length;
     }
 
-    public int getSquareNo(int x, int y) {
-        return x + y * maxX;
+    public ArrayList<Item> getDecoyList() {
+        return decoyList;
     }
 
+    public String getDecoyListString() {
+        String string = "";
+        for (Item d : decoyList) {
+            string += d.toString();
+        }
+        return string;
+    }
+
+    public void removeFoundDecoy(int x, int y) {
+        for (Item d : decoyList) {
+            if (d.getxCoordinate() == x && d.getyCoordinate() == y) {
+                decoyList.remove(d);
+            }
+        }
+    }
 }

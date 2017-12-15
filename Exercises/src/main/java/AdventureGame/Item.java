@@ -24,4 +24,13 @@ public class Item {
     public int getyCoordinate() {
         return yCoordinate;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemName='" + itemName + '\'' +
+                ", xCoordinate=" + xCoordinate +
+                ", yCoordinate=" + yCoordinate +
+                '}';
+    }
 }

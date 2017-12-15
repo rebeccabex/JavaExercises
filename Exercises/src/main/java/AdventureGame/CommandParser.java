@@ -21,7 +21,7 @@ public class CommandParser {
 
         switch (command.toLowerCase()) {
             case "look":
-                text = "You are " + map.distanceFromTreasure() + " metres from the treasure.";
+                text = "You are " + map.distanceToClosestItem() + " metres from an item.";
                 break;
             case "north":
             case "south":
@@ -38,6 +38,8 @@ public class CommandParser {
                     case 2:
                         text = "treasure";
                         break;
+                    case 3:
+                        text = "You found a chest! But it is empty. You must keep searching.";
                     default:
                         break;
                 }
@@ -55,6 +57,10 @@ public class CommandParser {
             // CHEAT - TO BE REMOVED
             case "treasure":
                 text = "x: " + map.getTreasureX() + "; y: " + map.getTreasureY();
+                break;
+            // CHEAT - TO BE REMOVED
+            case "decoys":
+                text = map.getDecoyListString();
                 break;
             default:
                 text = "Invalid command!";
@@ -91,6 +97,66 @@ public class CommandParser {
 
     public boolean checkQuit(String command) {
         return command.toLowerCase().equals("y") || command.toLowerCase().equals("yes");
+    }
+
+    public int parseGridSize(String command) {
+
+        int size = 10;
+
+        switch (command.toLowerCase()) {
+            case "small":
+                size = 10;
+                break;
+            case "medium":
+                size = 15;
+                break;
+            case "large":
+                size = 20;
+                break;
+            case "custom":
+                size = 0;
+                break;
+            default:
+                size = -1;
+                break;
+        }
+
+        return size;
+    }
+
+    public int parseDifficulty(String command) {
+
+        int decoy = 0;
+
+        switch (command.toLowerCase()) {
+            case "easy":
+                decoy = 0;
+                break;
+            case "medium":
+                decoy = 2;
+                break;
+            case "hard":
+                decoy = 4;
+                break;
+            case "custom":
+                decoy = -2;
+                break;
+            default:
+                decoy = -1;
+                break;
+        }
+
+        return decoy;
+    }
+
+    public int parseInt(String command) {
+        try {
+            int input = Integer.parseInt(command);
+            return Math.max(Math.min(input, 50), 10);
+        } catch (NumberFormatException e) {
+            System.out.println(command + " is not a number");
+            return -1;
+        }
     }
 
 }
