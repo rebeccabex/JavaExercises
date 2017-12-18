@@ -2,8 +2,8 @@ package AdventureGame;
 
 public class Game {
 
-    CLInterface cli;
-    CommandParser cp;
+    private CLInterface cli;
+    private CommandParser cp;
 
     public Game() {
 

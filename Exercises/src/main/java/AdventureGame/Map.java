@@ -1,6 +1,7 @@
 package AdventureGame;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Map {
 
@@ -23,7 +24,7 @@ public class Map {
     }
 
 
-    public void initialiseGrid(int x, int y) {
+    private void initialiseGrid(int x, int y) {
 
         maxX = x;
         maxY = y;
@@ -38,7 +39,7 @@ public class Map {
 
     }
 
-    public void initialisePlayer() {
+    private void initialisePlayer() {
 
         int playerX = rg.getRandomInt(maxX);
         int playerY = rg.getRandomInt(maxY);
@@ -47,7 +48,7 @@ public class Map {
 
     }
 
-    public void initialiseItems(int noOfDecoys) {
+    private void initialiseItems(int noOfDecoys) {
 
         decoyList = new ArrayList<Item>();
 
@@ -72,22 +73,22 @@ public class Map {
 
     }
 
-    public void placeItemOnSquare(int x, int y, int itemVal) {
+    private void placeItemOnSquare(int x, int y, int itemVal) {
         grid[x][y] = itemVal;
     }
 
-    public void placePlayerOnSquare(int x, int y) {
+    private void placePlayerOnSquare(int x, int y) {
         placeItemOnSquare(x, y, 1);
         player = new Player(x, y);
 
     }
 
-    public void placeTreasureOnSquare(int x, int y) {
+    private void placeTreasureOnSquare(int x, int y) {
         placeItemOnSquare(x, y, 2);
         treasure = new Item("Treasure", x, y);
     }
 
-    public void placeDecoyOnSquare(int x, int y) {
+    private void placeDecoyOnSquare(int x, int y) {
         placeItemOnSquare(x, y, 3);
         Item decoy = new Item("Decoy", x, y);
         decoyList.add(decoy);
@@ -248,7 +249,10 @@ public class Map {
     }
 
     public void removeFoundDecoy(int x, int y) {
-        for (Item d : decoyList) {
+
+        Iterator<Item> it = decoyList.iterator();
+        while (it.hasNext()) {
+            Item d = it.next();
             if (d.getxCoordinate() == x && d.getyCoordinate() == y) {
                 decoyList.remove(d);
             }
