@@ -2,7 +2,6 @@ package IntermediateExercises.LibraryTask;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 
@@ -22,21 +21,21 @@ public class MemberTest {
     @Test
     public void canCreateMember() {
 
-        ArrayList<Resource> emtpyList = new ArrayList<>();
+        ArrayList<Resource> emptyList = new ArrayList<>();
 
         assertEquals(1, member.getId());
         assertEquals("John Smith", member.getName());
         assertEquals("123 Fake Street", member.getHomeAddress());
-        assertEquals(emtpyList, member.getResourcesBorrowing());
+        assertEquals(emptyList, member.getItemsBorrowing());
 
     }
 
     @Test
     public void canUpdateMember() {
 
-        member.setName("Jane Smith");
+        member.update("name", "Jane Smith");
         assertEquals("Jane Smith", member.getName());
-        member.setHomeAddress("321 New Street");
+        member.update("address", "321 New Street");
         assertEquals("321 New Street", member.getHomeAddress());
 
     }

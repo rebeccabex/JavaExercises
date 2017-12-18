@@ -32,9 +32,9 @@ public class NewspaperTest {
     @Test
     public void canUpdateNewspaper() {
 
-        newspaper.setName("The Independent");
+        newspaper.update("name","The Independent");
         assertEquals("The Independent", newspaper.getName());
-        newspaper.setEditor("Jane Smith");
+        newspaper.update("editor","Jane Smith");
         assertEquals("Jane Smith", newspaper.getEditor());
 
     }

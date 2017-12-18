@@ -20,10 +20,16 @@ public class Journal extends Resource implements Periodical {
     @Override
     public void update(String fieldName, String newData) {
 
-//        switch (fieldName.toLowerCase()) {
-//            case "name":
-//                name = newData;
-//        }
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                setName(newData);
+                break;
+            case "publisher":
+                setPublisher(newData);
+                break;
+            default:
+                System.out.println("Field " + fieldName + " does not exist in " + getName());
+        }
     }
 
     public void addEdition(int editionId, int date, int month, int year, int volume, int issue) {
@@ -37,7 +43,7 @@ public class Journal extends Resource implements Periodical {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    private void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
@@ -56,5 +62,10 @@ public class Journal extends Resource implements Periodical {
         }
 
         return null;
+    }
+
+    @Override
+    public void addEdition(Edition edition) {
+        editionList.add(edition);
     }
 }

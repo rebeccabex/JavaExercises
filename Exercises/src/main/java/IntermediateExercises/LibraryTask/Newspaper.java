@@ -20,13 +20,24 @@ public class Newspaper extends Resource implements Periodical {
     @Override
     public void update(String fieldName, String newData) {
 
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                setName(newData);
+                break;
+            case "editor":
+                setEditor(newData);
+                break;
+            default:
+                System.out.println("Field " + fieldName + " does not exist in " + getName());
+        }
+
     }
 
     public String getEditor() {
         return editor;
     }
 
-    public void setEditor(String editor) {
+    private void setEditor(String editor) {
         this.editor = editor;
     }
 
@@ -52,5 +63,10 @@ public class Newspaper extends Resource implements Periodical {
         }
 
         return null;
+    }
+
+    @Override
+    public void addEdition(Edition edition) {
+        editionList.add(edition);
     }
 }

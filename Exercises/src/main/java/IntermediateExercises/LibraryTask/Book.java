@@ -27,18 +27,20 @@ public class Book extends Resource implements Borrowable {
         return yearPublished;
     }
 
+    @Override
     public int getLoanLength() {
         return loanLength;
     }
 
-    public void setYearPublished(int yearPublished) {
+    private void setYearPublished(int yearPublished) {
         this.yearPublished = yearPublished;
     }
 
-    public void setAuthor(String author) {
+    private void setAuthor(String author) {
         this.author = author;
     }
 
+    @Override
     public void setLoanLength(int loanLength) {
         this.loanLength = loanLength;
     }
@@ -77,7 +79,12 @@ public class Book extends Resource implements Borrowable {
         } else {
             return -1;
         }
-
     }
+
+    @Override
+    public void returnItem() {
+        available = true;
+    }
+
 
 }

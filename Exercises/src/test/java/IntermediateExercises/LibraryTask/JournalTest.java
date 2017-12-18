@@ -32,9 +32,9 @@ public class JournalTest {
     @Test
     public void canUpdateJournal() {
 
-        journal.setName("Nature magazine");
+        journal.update("name","Nature magazine");
         assertEquals("Nature magazine", journal.getName());
-        journal.setPublisher("Nature magazine publisher");
+        journal.update("publisher","Nature magazine publisher");
         assertEquals("Nature magazine publisher", journal.getPublisher());
 
     }
