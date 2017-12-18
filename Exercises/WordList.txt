@@ -1,0 +1,5 @@
+hello
+goodbye
+word
+list
+java

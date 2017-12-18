@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6904f7a6-754a-4e93-971c-947311e1caaf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Book.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Book.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Borrowable.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Borrowable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Journal.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Journal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Library.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Library.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Member.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Newspaper.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Newspaper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Periodical.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Periodical.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Resource.java" afterPath="$PROJECT_DIR$/src/main/java/IntermediateExercises/LibraryTask/Resource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/BookTest.java" afterPath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/BookTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/JournalTest.java" afterPath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/JournalTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/LibraryTest.java" afterPath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/LibraryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/MemberTest.java" afterPath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/MemberTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/NewspaperTest.java" afterPath="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/NewspaperTest.java" />
-    </list>
+    <list default="true" id="6904f7a6-754a-4e93-971c-947311e1caaf" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,29 +13,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LargeNumbers.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/IndividualExercises/LargeNumbers.java">
+      <file leaf-file-name="HashmapsAnagrams.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/HashmapsAnagrams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="55" column="37" lean-forward="true" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            <state relative-caret-position="438">
+              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
               <folding>
-                <element signature="e#692#693#0" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LargeNumbersTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/IndividualExercises/LargeNumbersTest.java">
+      <file leaf-file-name="FileWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises/FileWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="44" column="46" lean-forward="false" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#240#241#0" expanded="true" />
-                <element signature="e#284#285#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="91" column="17" lean-forward="true" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,7 +63,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/BlackjackTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/IntermediateExercises/Blackjack.java" />
         <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/IntermediateExercisesTest.java" />
@@ -133,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/LibraryTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/IndividualExercises/LargeNumbers.java" />
         <option value="$PROJECT_DIR$/src/test/java/IndividualExercises/LargeNumbersTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/HashmapsAnagrams.java" />
       </list>
     </option>
   </component>
@@ -201,28 +182,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="IndividualExercises" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Exercises" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Exercises" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Exercises" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Exercises" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Exercises" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Exercises" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="IntermediateExercises" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Exercises" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Exercises" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Exercises" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Exercises" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -252,15 +225,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LargeNumbers">
-    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.HashmapsAnagrams">
+    <configuration name="HashmapsAnagrams" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="AdventureGame.*" />
+          <option name="PATTERN" value="AdvancedExercises.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="AdventureGame.Game" />
+      <option name="MAIN_CLASS_NAME" value="AdvancedExercises.HashmapsAnagrams" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -443,18 +416,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.LibraryTestSuite" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Game" />
-      <item index="2" class="java.lang.String" itemvalue="Application.LibraryTestRunner" />
-      <item index="3" class="java.lang.String" itemvalue="Application.LargeNumbers" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.LargeNumbersTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.LibraryTestRunner" />
+      <item index="2" class="java.lang.String" itemvalue="Application.LargeNumbers" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.LargeNumbersTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HashmapsAnagrams" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.LargeNumbers" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.LargeNumbersTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.LibraryTestSuite" />
-        <item index="3" class="java.lang.String" itemvalue="Application.LibraryTestRunner" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Game" />
+        <item index="0" class="java.lang.String" itemvalue="Application.HashmapsAnagrams" />
+        <item index="1" class="java.lang.String" itemvalue="Application.LargeNumbers" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.LargeNumbersTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.LibraryTestSuite" />
+        <item index="4" class="java.lang.String" itemvalue="Application.LibraryTestRunner" />
       </list>
     </recent_temporary>
   </component>
@@ -478,7 +451,7 @@
       <workItem from="1513169886425" duration="13626000" />
       <workItem from="1513242118499" duration="20947000" />
       <workItem from="1513328322018" duration="22001000" />
-      <workItem from="1513591281771" duration="22504000" />
+      <workItem from="1513591281771" duration="24543000" />
     </task>
     <servers />
   </component>
@@ -515,10 +488,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111166000" />
+    <option name="totallyTimeSpent" value="113205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -529,7 +503,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29912663" sideWeight="0.5095238" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29912663" sideWeight="0.4904762" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29912663" sideWeight="0.4904762" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -566,13 +540,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises/TemperatureChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/IntermediateExercises/TemperatureCheckerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -664,14 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" column="51" lean-forward="false" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises/FileWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -972,7 +931,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/IndividualExercises/LargeNumbersTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
+        <state relative-caret-position="268">
           <caret line="44" column="46" lean-forward="false" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -984,11 +943,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/IndividualExercises/LargeNumbers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="55" column="37" lean-forward="true" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state relative-caret-position="-38">
+          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
           <folding>
             <element signature="e#692#693#0" expanded="true" />
             <element signature="e#748#749#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/IntermediateExercises/FileWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="91" column="17" lean-forward="true" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/HashmapsAnagrams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
