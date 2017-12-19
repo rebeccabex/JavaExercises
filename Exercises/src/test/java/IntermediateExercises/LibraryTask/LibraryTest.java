@@ -1,6 +1,7 @@
 package IntermediateExercises.LibraryTask;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,11 +26,13 @@ public class LibraryTest {
         journal = new Journal(3, "Lancet", "Nature publisher");
         member = new Member(1, "Jane Smith", "123 FakeStreet");
 
-        library.addMember(member);
-        library.addResource(book);
-        library.addResource(newspaper);
-        library.addResource(journal);
+        library.addMember("Jane Smith", "123 FakeStreet");
+        library.addBook("The Lord of the Rings", 1954, "JRR Tolkein");
+        library.addNewspaper("Independent", "John Smith");
+        library.addJournal("Nature", "Nature publisher");
 
+        library.addNewPeriodicalEditionById(2, 18,12,2017);
+        library.addNewPeriodicalEditionById(3, 18,12,2017, 117, 4);
     }
 
     @Test
@@ -37,15 +40,15 @@ public class LibraryTest {
 
         library = new Library();
 
-        library.addResource(book);
+        library.addBook("The Lord of the Rings", 1954, "JRR Tolkein");
         assertEquals(1, library.getTypeOfResourceCount("book"), "Should be 1 book");
         assertEquals(1, library.getResourceCount(),"Should be 1 resource");
 
-        library.addResource(newspaper);
+        library.addNewspaper("Independent", "John Smith");
         assertEquals(1, library.getTypeOfResourceCount("newspaper"),"Should be 1 newspaper");
         assertEquals(2, library.getResourceCount(),"Should be 2 resources");
 
-        library.addResource(journal);
+        library.addJournal("Lancet", "Nature publisher");
         assertEquals(1, library.getTypeOfResourceCount("journal"),"Should be 1 journal");
         assertEquals(3, library.getResourceCount(),"Should be 3 resources");
 
@@ -61,13 +64,13 @@ public class LibraryTest {
     @Test
     public void canUpdateBook() {
 
-        library.updateResource(book, "name", "The Two Towers");
+        library.updateResourceById(1, "name", "The Two Towers");
         assertEquals("The Two Towers", library.findResourceById(1).getName());
 
-        library.updateResource(book, "author", "J Tolkein");
+        library.updateResourceById(1, "author", "J Tolkein");
         assertEquals("J Tolkein", ((Book) library.findResourceById(1)).getAuthor());
 
-        library.updateResource(book, "year published", "1955");
+        library.updateResourceById(1, "year published", "1955");
         assertEquals(1955, ((Book) library.findResourceById(1)).getYearPublished());
 
     }
@@ -75,10 +78,10 @@ public class LibraryTest {
     @Test
     public void canUpdateNewspaper() {
 
-        library.updateResource(newspaper, "name", "The Independent");
+        library.updateResourceById(2, "name", "The Independent");
         assertEquals("The Independent", library.findResourceById(2).getName());
 
-        library.updateResource(newspaper, "editor", "Jane Smith");
+        library.updateResourceById(2, "editor", "Jane Smith");
         assertEquals("Jane Smith", ((Newspaper) library.findResourceById(2)).getEditor());
 
     }
@@ -86,10 +89,10 @@ public class LibraryTest {
     @Test
     public void canUpdateJournal() {
 
-        library.updateResource(journal, "name", "Nature magazine");
+        library.updateResourceById(3, "name", "Nature magazine");
         assertEquals("Nature magazine", library.findResourceById(3).getName());
 
-        library.updateResource(journal, "publisher", "Nature magazine publisher");
+        library.updateResourceById(3, "publisher", "Nature magazine publisher");
         assertEquals("Nature magazine publisher", ((Journal) library.findResourceById(3)).getPublisher());
 
     }
@@ -97,11 +100,14 @@ public class LibraryTest {
     @Test
     public void canUpdateMember() {
 
-        library.updateMember(member,"name", "John Smith");
-        assertEquals("John Smith", member.getName());
+        library.updateMemberById(1,"name", "John Smith");
+        assertEquals("John Smith", library.findMemberById(1).getName());
 
-        library.updateMember(member,"address", "456 New Road");
-        assertEquals("456 New Road", member.getHomeAddress());
+        library.updateMemberById(1,"address", "456 New Road");
+        assertEquals("456 New Road", library.findMemberById(1).getHomeAddress());
+
+//        library.updateMemberById(2, "name", "John Smith");
+//        assertEquals("Jane Smith", member.getName());
 
     }
 
@@ -117,25 +123,25 @@ public class LibraryTest {
     @Test
     public void canReturnResource() {
 
-        library.borrowResource(member, book);
-        library.returnResource(member, book);
-        assertEquals(0, member.getItemsBorrowing().size());
-        assertTrue(book.isAvailable());
+        library.borrowResourceByIds(1, 1);
+        library.returnResourceByIds(1, 1);
+        assertEquals(0, library.findMemberById(1).getItemsBorrowing().size());
+        assertTrue(((Borrowable) library.findResourceById(1)).isAvailable());
 
     }
 
     @Test
     public void canDeleteResource() {
 
-        library.deleteResource(book);
+        library.deleteResourceById(1);
         assertEquals(0, library.getTypeOfResourceCount("book"), "Should be 0 books");
         assertEquals(2, library.getResourceCount(),"Should be 2 resources");
 
-        library.deleteResource(newspaper);
+        library.deleteResourceById(2);
         assertEquals(0, library.getTypeOfResourceCount("newspaper"),"Should be 0 newspapers");
         assertEquals(1, library.getResourceCount(),"Should be 1 resource");
 
-        library.deleteResource(journal);
+        library.deleteResourceById(3);
         assertEquals(0, library.getTypeOfResourceCount("journal"),"Should be 0 journals");
         assertEquals(0, library.getResourceCount(),"Should be 0 resources");
 
@@ -144,7 +150,7 @@ public class LibraryTest {
     @Test
     public void canDeleteMember() {
 
-        library.deleteMember(member);
+        library.deleteMemberById(1);
         assertEquals(0, library.getMemberCount(), "Should be 0 members");
 
     }
@@ -152,11 +158,9 @@ public class LibraryTest {
     @Test
     public void canAddPeriodicalEdition() {
 
-        library.addNewPeriodicalEdition(newspaper, 18,12,2017);
-        assertEquals(1, newspaper.getEditionList().size());
+        assertEquals(1, ((Newspaper) library.findResourceById(2)).getEditionList().size());
 
-        library.addNewPeriodicalEdition(journal, 18,12,2017, 117, 4);
-        assertEquals(1, journal.getEditionList().size());
+        assertEquals(1, ((Journal) library.findResourceById(3)).getEditionList().size());
 
     }
 
@@ -164,10 +168,10 @@ public class LibraryTest {
     public void canGetBorrowableList() {
 
         Book book2 = new Book(2, "The Hunger Games", 2010, "Suzanne Collins");
-        library.addResource(book2);
+        library.addBook("The Hunger Games", 2010, "Suzanne Collins");
         assertEquals(2, library.getBorrowableResources().size());
 
-        library.borrowResource(member, book2);
+        library.borrowResourceByIds(1, 1);
         assertEquals(1, library.getBorrowableResources().size());
 
     }
@@ -175,7 +179,33 @@ public class LibraryTest {
     @Test
     public void canGetAvailableList() {
 
+        assertEquals(3, library.getAvailableResources().size());
 
+        library.addBook("The Hunger Games", 2010, "Suzanne Collins");
+        library.addNewspaper("The Guardian", "AN Other");
+        library.addNewPeriodicalEditionById(6, 19,12,2017);
+
+        assertEquals(5, library.getAvailableResources().size());
+
+        library.borrowResourceByIds(1, 1);
+        assertEquals(4, library.getAvailableResources().size());
 
     }
+
+    @Test
+    public void canSaveAvailableList() {
+
+        assertTrue(library.saveAvailableResources("C:\\Users\\Admin\\JavaExercises\\Exercises\\LibraryAvailableList.txt"));
+//        assertFalse(library.saveAvailableResources("string"));
+
+    }
+
+    @Test
+    public void canLoadAvailableList() {
+
+        assertTrue(library.loadAvailableResources("C:\\Users\\Admin\\JavaExercises\\Exercises\\LibraryAvailableList.txt"));
+        assertFalse(library.loadAvailableResources("string"));
+
+    }
+
 }
