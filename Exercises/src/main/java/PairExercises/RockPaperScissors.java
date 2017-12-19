@@ -15,7 +15,8 @@ public class RockPaperScissors {
 
         while (playing) {
 
-            String playerInput = cli.playerInput("'Play' to play against AI, 'AI' to watch AI play AI, or 'end' to exit");
+            String playerInput = cli.playerInput("'Play' to play against AI, 'AI' to watch AI play AI, " +
+                    "'multi' to play against multiple ai or 'end' to exit");
 
             switch (playerInput.toLowerCase()) {
                 case "play":
@@ -23,6 +24,9 @@ public class RockPaperScissors {
                     break;
                 case "ai":
                     game.aiVersusAI();
+                    break;
+                case "multi":
+                    game.multiGame();
                     break;
                 case "end":
                     playing = false;

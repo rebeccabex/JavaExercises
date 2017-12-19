@@ -5,9 +5,27 @@ import AdventureGame.RandomGenerator;
 public class AI {
 
     private RandomGenerator rg;
+    private int score;
+    private String choice;
 
     public AI() {
         rg = new RandomGenerator();
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getChoice() {
+        return choice;
+    }
+
+    public void setChoice(String choice) {
+        this.choice = choice;
     }
 
     public String generateMove(int[] choiceArray) {
@@ -20,9 +38,9 @@ public class AI {
 
         int randNum = rg.getRandomInt(sum + 3);
 
-        if (randNum <= choiceArray[0] + 1) {
+        if (randNum < choiceArray[0] + 1) {
             return "paper";
-        } else if (randNum <= choiceArray[0] + choiceArray[1] + 2) {
+        } else if (randNum < choiceArray[0] + choiceArray[1] + 2) {
             return "scissors";
         } else {
             return "rock";
@@ -37,7 +55,7 @@ public class AI {
             sum += choiceArray[i];
         }
 
-        int randNum = rg.getRandomInt(sum + 3);
+        int randNum = rg.getRandomInt(sum + 2);
 
         if (randNum <= choiceArray[0] + 1) {
             return "scissors";

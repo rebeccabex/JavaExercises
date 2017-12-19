@@ -2,6 +2,9 @@ package PairExercises;
 
 import AdventureGame.CLInterface;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Game {
 
     CLInterface cli;
@@ -9,6 +12,97 @@ public class Game {
     public Game() {
         cli = new CLInterface();
     }
+
+    public void multiGame() {
+
+        ArrayList<AI> aiList = new ArrayList<>();
+
+        int playerScore = 0;
+        int aiScore = 0;
+
+        int[] playerUsed = {0, 0, 0};
+
+        boolean playing = true;
+
+        String input = cli.playerInput("Enter number of AI");
+
+        try {
+            int noOfAI = Integer.parseInt(input);
+
+            for (int i = 0; i < noOfAI; i++) {
+                aiList.add(new AI());
+            }
+
+            while (playing) {
+
+                String playerChoice = cli.playerInput("Enter choice, or 'back' to return to menu:");
+
+                if (playerChoice.equalsIgnoreCase("back")) {
+                    playing = false;
+                } else {
+
+                    int[] choicesPlayed = {0, 0, 0};
+
+                    choicesPlayed = updateChoiceArray(choicesPlayed, playerChoice);
+
+                    for (AI ai : aiList) {
+                        ai.setChoice(ai.generateMove(playerUsed));
+                        choicesPlayed = updateChoiceArray(choicesPlayed, ai.getChoice());
+                        System.out.println(ai.getChoice());
+                    }
+
+                    int chosen = 0;
+
+                    for (int i = 0 ; i < 3; i++) {
+                        if(choicesPlayed[i] > 0) {
+                            chosen++;
+                        }
+                    }
+
+                    if (chosen == 2) {
+                        String winner = "";
+                        String loser = "";
+
+                        if (choicesPlayed[0] > 0) {
+                            if (choicesPlayed[1] > 0) {
+                                winner = "paper";
+                                loser = "rock";
+                            } else {
+                                winner = "rock";
+                                loser = "scissors";
+                            }
+                        } else {
+                            winner = "scissors";
+                            loser = "paper";
+                        }
+
+                        Iterator<AI> it = aiList.iterator();
+                        while (it.hasNext()) {
+                            AI ai = it.next();
+                            if (ai.getChoice().equalsIgnoreCase(loser)) {
+                                it.remove();
+                            }
+                        }
+
+                        if (playerChoice.equalsIgnoreCase(loser)) {
+                            System.out.println("Sorry, you lost");
+                            playing = false;
+                        } else if (aiList.size() == 0) {
+                            System.out.println("Congratulations, you won!");
+                            playing = false;
+                        } else {
+                            System.out.println("Well done, you made the next round");
+                        }
+                    } else {
+                        System.out.println("Draw");
+                    }
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(input + " is not a number");
+        }
+    }
+
 
     public void aiVersusAI() {
 
@@ -31,36 +125,36 @@ public class Game {
                 playing = false;
             } else {
 
-                int noOfGames = Integer.parseInt(playerInput);
+                try {
+                    int noOfGames = Integer.parseInt(playerInput);
 
-                for (int i = 0; i < noOfGames; i++) {
+                    for (int i = 0; i < noOfGames; i++) {
 
-                    String ai1Choice = ai1.generateMove(ai2Used);
-                    String ai2Choice = ai2.betterMove(ai2Used);
+                        String ai1Choice = ai1.generateMove(ai2Used);
+                        String ai2Choice = ai2.betterMove(ai2Used);
 
-                    ai1Used = updateChoiceArray(ai1Used, ai1Choice);
-                    ai2Used = updateChoiceArray(ai2Used, ai2Choice);
+                        ai1Used = updateChoiceArray(ai1Used, ai1Choice);
+                        ai2Used = updateChoiceArray(ai2Used, ai2Choice);
 
-                    System.out.println(ai1Choice);
-                    System.out.println(ai2Choice);
+                        System.out.println(ai1Choice);
+                        System.out.println(ai2Choice);
 
-                    String winner = compareChoices(ai1Choice, ai2Choice);
-                    if (winner.equalsIgnoreCase("player 1")) {
-                        ai1Score++;
-                    } else if (winner.equalsIgnoreCase("player 2")) {
-                        ai2Score++;
+                        String winner = compareChoices(ai1Choice, ai2Choice);
+                        if (winner.equalsIgnoreCase("player 1")) {
+                            ai1Score++;
+                        } else if (winner.equalsIgnoreCase("player 2")) {
+                            ai2Score++;
+                        }
+                        System.out.println(winner + " Score: " + ai1Score + "-" + ai2Score);
                     }
-                    System.out.println(winner + " Score: " + ai1Score + "-" + ai2Score);
+                } catch (NumberFormatException e) {
+                    System.out.println(playerInput + " is not a number");
                 }
             }
         }
     }
 
     public void playerVersusAI() {
-
-        int rock = 0;
-        int paper = 0;
-        int scissors = 0;
 
         int playerScore = 0;
         int aiScore = 0;
