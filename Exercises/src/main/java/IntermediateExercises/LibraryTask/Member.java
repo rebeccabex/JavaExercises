@@ -83,7 +83,6 @@ public class Member {
                 return true;
             }
         }
-
         return false;
     }
 }

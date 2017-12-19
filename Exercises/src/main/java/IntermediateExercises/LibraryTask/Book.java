@@ -86,5 +86,13 @@ public class Book extends Resource implements Borrowable {
         available = true;
     }
 
-
+    @Override
+    public String toString() {
+        return "Book {" + super.toString() +
+                ", Year Published: " + yearPublished +
+                ", Author: " + author +
+                ", Available to Borrow: " + available +
+                ", Loan Length (days): " + loanLength +
+                '}';
+    }
 }

@@ -106,6 +106,8 @@ public class IntermediateExercises {
 
         FileWorker fileWorker = new FileWorker();
 
+        fileWorker.fileWorkerExample();
+
     }
 
 

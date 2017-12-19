@@ -5,7 +5,11 @@ import java.util.ArrayList;
 
 public class FileWorker {
 
-    FileWorker() {
+    public FileWorker() {
+
+    }
+
+    public void fileWorkerExample() {
 
         ArrayList<Person> personList = new ArrayList<Person>();
         ArrayList<String> nameList = new ArrayList<String>();
@@ -39,17 +43,26 @@ public class FileWorker {
     public void writeToFile(Person person) {
 
         String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + person.getName() + ".txt";
+        String data = person.toString();
+
+        fileWriter(filename, data);
+
+    }
+
+    public boolean fileWriter(String filename, String data) {
 
         BufferedWriter bw = null;
         FileWriter fw = null;
 
-        try {
+        boolean success = false;
 
-            String data = person.toString();
+        try {
 
             fw = new FileWriter(filename);
             bw = new BufferedWriter(fw);
             bw.write(data);
+
+            success = true;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,54 +78,65 @@ public class FileWorker {
                 ex.printStackTrace();
             }
         }
-
+        return success;
     }
 
-     public ArrayList<Person> readFromFile(ArrayList<String> nameList) {
+    public ArrayList<Person> readFromFile(ArrayList<String> nameList) {
 
         ArrayList<Person> personList = new ArrayList<Person>();
 
         for (String name : nameList) {
 
-            BufferedReader br = null;
-            FileReader fr = null;
+            String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + name + ".txt";
 
-            try {
+            ArrayList<String> stringArray = fileReader(filename);
 
-                String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + name + ".txt";
+            String personString = "";
 
-                fr = new FileReader(filename);
-                br = new BufferedReader(fr);
-
-                String sCurrentLine;
-                String personString = "";
-
-                while ((sCurrentLine = br.readLine()) != null) {
-                    personString += sCurrentLine;
-                }
-
-                Person newPerson = parsePersonString(personString);
-
-                personList.add(newPerson);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (br != null) {
-                        br.close();
-                    }
-                    if (fr != null) {
-                        fr.close();
-                    }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+            for (String s : stringArray) {
+                personString += s;
             }
 
+            Person newPerson = parsePersonString(personString);
+
+            personList.add(newPerson);
         }
          return personList;
-     }
+    }
+
+    public ArrayList<String> fileReader(String filename) {
+
+         ArrayList<String> stringArray = new ArrayList<String>();
+
+         BufferedReader br = null;
+         FileReader fr = null;
+
+         try {
+             fr = new FileReader(filename);
+             br = new BufferedReader(fr);
+
+             String sCurrentLine;
+             String personString = "";
+
+             while ((sCurrentLine = br.readLine()) != null) {
+                 stringArray.add(sCurrentLine);
+             }
+         } catch (IOException e) {
+             e.printStackTrace();
+         } finally {
+             try {
+                 if (br != null) {
+                     br.close();
+                 }
+                 if (fr != null) {
+                     fr.close();
+                 }
+             } catch (IOException ex) {
+                 ex.printStackTrace();
+             }
+         }
+         return stringArray;
+    }
 
     private Person parsePersonString(String personString) {
 

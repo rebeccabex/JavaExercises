@@ -68,4 +68,25 @@ public class Journal extends Resource implements Periodical {
     public void addEdition(Edition edition) {
         editionList.add(edition);
     }
+
+    @Override
+    public String toString() {
+        return "Journal {" + super.toString() +
+                ", Publisher: " + publisher +
+                ", Editions: " + editionList +
+                '}';
+    }
+
+    @Override
+    public String editionsToString() {
+
+        String editionString = "";
+
+        for (Edition e : editionList) {
+            editionString += "{" + e.toString() + "}\n";
+        }
+
+        return editionString;
+    }
+
 }

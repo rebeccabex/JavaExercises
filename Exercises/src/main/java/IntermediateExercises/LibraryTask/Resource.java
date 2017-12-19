@@ -26,4 +26,8 @@ public abstract class Resource {
 
     public abstract void update(String field, String newData);
 
+    @Override
+    public String toString() {
+        return "Id: " + id +", Name: " + name;
+    }
 }
