@@ -1,0 +1,4 @@
+Book {Id: 1, Name: The Lord of the Rings, Year Published: 1954, Author: JRR Tolkein, Available to Borrow: true, Loan Length (days): 21}
+Newspaper {Id: 2, Name: Independent, Editor: John Smith, Editions: {Date: 18, Month: 12, Year: 2017}
+}
+Journal {Id: 3, Name: Nature, Publisher: Nature publisher, Editions: [Date: 18, Month: 12, Year: 2017, Volume: 117, Isuse: 4]}

@@ -3,3 +3,11 @@ goodbye
 word
 list
 java
+arc
+car
+rat
+tar
+art
+nest
+sent
+tens
