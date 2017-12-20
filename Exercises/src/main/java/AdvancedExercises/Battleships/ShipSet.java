@@ -10,9 +10,11 @@ public class ShipSet {
 
         shipList = new ArrayList<>();
 
-        Ship patrolBoat = new Ship("Patrol Boat", 2);
+        Ship patrolBoat1 = new Ship("Patrol Boat", 2);
+        shipList.add(patrolBoat1);
 
-        shipList.add(patrolBoat);
+        Ship patrolBoat2 = new Ship("Patrol Boat", 2);
+        shipList.add(patrolBoat2);
 
     }
 
