@@ -28,21 +28,7 @@ public class CommandParser {
             case "east":
             case "west":
                 int val = parseMove(command, map);
-                switch (val) {
-                    case 0:
-                        text = "You cannot move " + command + ". It is too boggy in this direction.";
-                        break;
-                    case 1:
-                        text = "You moved 1 metre " + command;
-                        break;
-                    case 2:
-                        text = "treasure";
-                        break;
-                    case 3:
-                        text = "You found a chest! But it is empty. You must keep searching.";
-                    default:
-                        break;
-                }
+                text = moveText(val, command);
                 break;
             case "help":
                 text = helpText;
@@ -92,7 +78,21 @@ public class CommandParser {
         }
 
         return val;
+    }
 
+    public String moveText(int val, String direction) {
+        switch (val) {
+            case 0:
+                return "You cannot move " + direction + ". It is too boggy in this direction.";
+            case 1:
+                return "You moved 1 metre " + direction;
+            case 2:
+                return "treasure";
+            case 3:
+                return "You found a chest! But it is empty. You must keep searching.";
+            default:
+                return "";
+        }
     }
 
     public boolean checkQuit(String command) {

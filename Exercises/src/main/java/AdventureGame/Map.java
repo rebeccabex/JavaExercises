@@ -254,7 +254,7 @@ public class Map {
         while (it.hasNext()) {
             Item d = it.next();
             if (d.getxCoordinate() == x && d.getyCoordinate() == y) {
-                decoyList.remove(d);
+                it.remove();
             }
         }
     }
