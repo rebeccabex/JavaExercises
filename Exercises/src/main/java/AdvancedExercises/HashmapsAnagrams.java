@@ -9,7 +9,7 @@ public class HashmapsAnagrams {
     public HashmapsAnagrams() {
 
         ArrayList<String> wordList = readWordList();
-        
+
         Anagrams anagrams = new Anagrams();
         HashMap<String, ArrayList<String>> anagramMap = anagrams.createHashMap(wordList);
         String bestWord = anagrams.mostAnagrams(anagramMap);
