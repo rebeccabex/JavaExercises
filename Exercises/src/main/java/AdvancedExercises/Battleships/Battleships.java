@@ -17,7 +17,7 @@ public class Battleships {
         commandParser = new CommandParser();
         clInterface.setDelimiter("\n");
 
-        gridSize = 3;
+        gridSize = 12;
         players = new ArrayList<>();
 
         setup();
@@ -31,15 +31,21 @@ public class Battleships {
 
     public void setup() {
 
+        // Currently only placing size 2 ships
         // To replace with ability to choose placement
         int[][][] initPlaces = {
-                {{1, 1}, {0, 0}},
-                {{1, 0}, {1, 2}},
+                {{1, 1}, {0, 0}, {3, 3}, {6, 8}, {1, 7}, {9, 2}, {9, 7}},
+                {{1, 0}, {1, 2}, {9, 2}, {4, 6}, {5, 3}, {1, 9}, {3, 5}}
+        };
+
+        boolean[][] initOrientations = {
+                {true, false, true, false, true, false, true},
+                {false, true, false, true, false, true, false},
         };
 
         for (int i = 0; i < 2; i++) {
             Player player = new Player(gridSize);
-            player.placeShips(initPlaces[i]);
+            player.placeShips(initPlaces[i], initOrientations[i]);
             players.add(player);
             System.out.println(player.getShipGridString());
         }

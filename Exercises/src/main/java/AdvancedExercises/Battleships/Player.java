@@ -10,20 +10,16 @@ public class Player {
         shipSet = new ShipSet();
     }
 
-    public boolean placeShips(int[][] initPlaces) {
+    // will edit when implement ability for user to input ship's places
+    public boolean placeShips(int[][] initPlaces, boolean[] initOrientations) {
         Ship shipToPlace = shipSet.nextShipToPlace();
 
-        boolean placed = shipGrid.placeShip(shipToPlace, initPlaces[0][0], initPlaces[0][1], true);
-        if (!placed) {
-            System.out.println("Invalid ship placement");
+        for (int i = 0; i < initOrientations.length; i++) {
+            boolean placed = shipGrid.placeShip(shipToPlace, initPlaces[i][0], initPlaces[i][1], initOrientations[i]);
+            if (!placed) {
+                System.out.println("Invalid ship placement");
+            }
         }
-
-        shipToPlace = shipSet.nextShipToPlace();
-        placed = shipGrid.placeShip(shipToPlace, initPlaces[1][0], initPlaces[1][1], false);
-        if (!placed) {
-            System.out.println("Invalid ship placement");
-        }
-
         return true;
     }
 
