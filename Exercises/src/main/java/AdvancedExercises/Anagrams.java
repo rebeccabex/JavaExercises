@@ -49,9 +49,14 @@ public class Anagrams {
         return bestWord;
     }
 
-    public String anagramSetToSring(ArrayList<String> anagramSet) {
+    public String anagramSetToString(String word, ArrayList<String> anagramSet) {
 
+        String returnString = word;
 
-        return "";
+        for (String s: anagramSet) {
+            returnString += "; " + s;
+        }
+
+        return returnString;
     }
 }

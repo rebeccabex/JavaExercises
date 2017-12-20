@@ -9,21 +9,12 @@ public class HashmapsAnagrams {
     public HashmapsAnagrams() {
 
         ArrayList<String> wordList = readWordList();
-        ArrayList<String> sortedWordList = new ArrayList<>();
-
-        WordSort ws = new WordSort();
-
-        for (String w : wordList) {
-//            System.out.println(w);
-            String sorted = ws.sortWord(w);
-            sortedWordList.add(sorted);
-        }
-
+        
         Anagrams anagrams = new Anagrams();
-        HashMap<String, ArrayList<String>> anagramMap = anagrams.createHashMap(sortedWordList);
+        HashMap<String, ArrayList<String>> anagramMap = anagrams.createHashMap(wordList);
         String bestWord = anagrams.mostAnagrams(anagramMap);
 
-        System.out.println(bestWord);
+        System.out.println(anagrams.anagramSetToString(bestWord, anagramMap.get(bestWord)));
 
     }
 

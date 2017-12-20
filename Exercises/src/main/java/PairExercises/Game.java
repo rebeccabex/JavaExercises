@@ -17,9 +17,6 @@ public class Game {
 
         ArrayList<AI> aiList = new ArrayList<>();
 
-        int playerScore = 0;
-        int aiScore = 0;
-
         int[] playerUsed = {0, 0, 0};
 
         boolean playing = true;
