@@ -49,4 +49,8 @@ public class ShipSet {
         }
     }
 
+    public boolean allShipsSunk() {
+        return shipList.isEmpty();
+    }
+
 }

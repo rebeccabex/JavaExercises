@@ -62,9 +62,16 @@ public class Battleships {
                 int[] guess = commandParser.parseGuess(playerInput);
                 int actionValue = players.get(flipPlayers(turnPlayer)).takeShot(guess);
                 System.out.println(coordinateHitText(actionValue));
+
+                // shows grid each turn for testing
                 System.out.println(players.get(flipPlayers(turnPlayer)).getShipGridString());
+
                 if (actionValue == 0) {
                     turnPlayer = flipPlayers(turnPlayer);
+                } else {
+                    if (actionValue == 5) {
+                        playing = false;
+                    }
                 }
             }
         }
@@ -89,6 +96,9 @@ public class Battleships {
                 break;
             case 4:
                 action = "You hit and sunk your opponent's ship! Have another turn!";
+                break;
+            case 5:
+                action = "Congratulations! You sunk all of your opponent's ships! You win!";
                 break;
             default:
                 action = "Invalid coordinates. Must be between 0 and " + (gridSize - 1);

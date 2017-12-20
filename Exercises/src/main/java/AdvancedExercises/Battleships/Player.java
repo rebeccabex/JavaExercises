@@ -37,15 +37,21 @@ public class Player {
         if (actionValue == 1) {
             Ship hitShip = shipSet.whichShipHit(x, y);
             if (shipSet.isShipSunk(hitShip)) {
-                actionValue = 4;
+                if (hasPlayerLost()) {
+                    actionValue = 5;
+                } else {
+                    actionValue = 4;
+                }
             }
         }
         return actionValue;
     }
 
+    public boolean hasPlayerLost() {
+        return shipSet.allShipsSunk();
+    }
+
     public String getShipGridString() {
         return shipGrid.gridToString();
     }
-
-
 }
