@@ -6,6 +6,7 @@ public class Ship {
     private int size;
     private int[][] coordinates;
     private boolean placed;
+    private int hits;
     private boolean sunk;
 
     public Ship(String name, int size) {
@@ -14,15 +15,14 @@ public class Ship {
         this.size = size;
         coordinates = new int[size][2];
         placed = false;
+        hits = 0;
         sunk = false;
 
     }
 
     public void placeShip(int firstX, int firstY, boolean northToSouth) {
-        coordinates[0][0] = firstX;
-        coordinates[0][1] = firstY;
 
-        for (int i = 1; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if (northToSouth) {
                 coordinates[i][0] = firstX;
                 coordinates[i][1] = firstY + i;
@@ -33,7 +33,21 @@ public class Ship {
         }
 
         placed = true;
+    }
 
+    public boolean shipHit(int x, int y) {
+
+        for (int i = 0; i < size; i++) {
+            if (coordinates[i][0] == x && coordinates[i][1] == y) {
+                hits++;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean shipSunk() {
+        return size == hits;
     }
 
     public String getName() {

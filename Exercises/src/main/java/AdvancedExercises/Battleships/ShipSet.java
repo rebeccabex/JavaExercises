@@ -1,6 +1,7 @@
 package AdvancedExercises.Battleships;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ShipSet {
 
@@ -26,6 +27,26 @@ public class ShipSet {
             }
         }
         return null;
+    }
+
+    public Ship whichShipHit(int x, int y) {
+
+        for (Ship ship : shipList) {
+            if (ship.shipHit(x, y)) {
+                return ship;
+            }
+        }
+        return null;
+    }
+
+    public boolean isShipSunk(Ship ship) {
+
+        if (ship.shipSunk()) {
+            shipList.remove(ship);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

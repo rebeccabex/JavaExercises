@@ -1,5 +1,7 @@
 package AdvancedExercises.Battleships;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 public class Grid {
 
     private int size;
@@ -70,6 +72,31 @@ public class Grid {
         }
 
         return gridString;
+    }
+
+    public int targetCoordinates(int x, int y) {
+
+        int spaceVal = -1;
+        if (validCoordinates(x, y)) {
+            spaceVal = grid[x][y];
+            if (spaceVal < 2 && spaceVal >= 0) {
+                grid[x][y] += 2;
+            }
+        }
+        return spaceVal;
+    }
+
+    public boolean validCoordinates(int x, int y) {
+
+        if (x < 0 || x >= size) {
+            return false;
+        }
+
+        if (y < 0 || y >= size) {
+            return false;
+        }
+
+        return true;
     }
 
     public int getSize() {

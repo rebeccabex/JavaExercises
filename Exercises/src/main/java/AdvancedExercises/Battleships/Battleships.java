@@ -1,36 +1,27 @@
 package AdvancedExercises.Battleships;
 
+import AdventureGame.CLInterface;
+
+import java.util.ArrayList;
+
 public class Battleships {
+
+    private ArrayList<Player> players;
+    private CLInterface clInterface;
+    private CommandParser commandParser;
+    private int gridSize;
 
     public Battleships() {
 
-        Grid p1grid = new Grid(3);
-        ShipSet p1Ships = new ShipSet();
+        clInterface = new CLInterface();
+        commandParser = new CommandParser();
+        clInterface.setDelimiter("\n");
 
-        Ship shipToPlace = p1Ships.nextShipToPlace();
+        gridSize = 3;
+        players = new ArrayList<>();
 
-        boolean placed = p1grid.placeShip(shipToPlace,1,1, true);
-        if (!placed) {
-            System.out.println("Invalid ship placement");
-        }
-
-        shipToPlace = p1Ships.nextShipToPlace();
-        placed = p1grid.placeShip(shipToPlace,0,0, false);
-        if (!placed) {
-            System.out.println("Invalid ship placement");
-        }
-
-//        while (shipToPlace != null) {
-//            boolean placed = p1grid.placeShip(shipToPlace,2,1, true);
-//            if (!placed) {
-//                System.out.println("Invalid ship placement");
-//                break;
-//            }
-//            shipToPlace = p1Ships.nextShipToPlace();
-//        }
-
-
-        System.out.println(p1grid.gridToString());
+        setup();
+        playGame();
 
     }
 
@@ -38,7 +29,78 @@ public class Battleships {
         Battleships battleships = new Battleships();
     }
 
+    public void setup() {
 
+        // To replace with ability to choose placement
+        int[][][] initPlaces = {
+                {{1, 1}, {0, 0}},
+                {{1, 0}, {1, 2}},
+        };
+
+        for (int i = 0; i < 2; i++) {
+            Player player = new Player(gridSize);
+            player.placeShips(initPlaces[i]);
+            players.add(player);
+            System.out.println(player.getShipGridString());
+        }
+    }
+
+    public void playGame() {
+
+        boolean playing = true;
+
+        int turnPlayer = 0;
+
+        while (playing) {
+
+            String playerInput = clInterface.playerInput("Player " + (turnPlayer + 1) + "'s turn." +
+                    " Enter guess in form x, y or enter 'QUIT' to exit:");
+
+            if (playerInput.equalsIgnoreCase("quit")) {
+                playing = false;
+            } else {
+                int[] guess = commandParser.parseGuess(playerInput);
+                int actionValue = players.get(flipPlayers(turnPlayer)).takeShot(guess);
+                System.out.println(coordinateHitText(actionValue));
+                System.out.println(players.get(flipPlayers(turnPlayer)).getShipGridString());
+                if (actionValue == 0) {
+                    turnPlayer = flipPlayers(turnPlayer);
+                }
+            }
+        }
+    }
+
+    public String coordinateHitText(int actionValue) {
+
+        String action = "";
+
+        switch (actionValue) {
+            case 0:
+                action = "You missed";
+                break;
+            case 1:
+                action = "You hit! Have another turn!";
+                break;
+            case 2:
+                action = "You've already tried that space and it was empty. Guess again.";
+                break;
+            case 3:
+                action = "You've already tried that space and it was a hit. Guess again.";
+                break;
+            case 4:
+                action = "You hit and sunk your opponent's ship! Have another turn!";
+                break;
+            default:
+                action = "Invalid coordinates. Must be between 0 and " + (gridSize - 1);
+        }
+        return action;
+    }
+
+
+    // change 0 to 1 and vice versa
+    public int flipPlayers(int i) {
+        return -i + 1;
+    }
 
 }
 

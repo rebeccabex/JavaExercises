@@ -20,5 +20,7 @@ public class CLInterface {
 
     }
 
-
+    public void setDelimiter(String delimiter) {
+        reader.useDelimiter(delimiter);
+    }
 }
