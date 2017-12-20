@@ -15,17 +15,21 @@ public class RunMorseCode extends MorseCode {
         boolean running = true;
         String stop = "Quit";
 
+
+
         while (running) {
+
 
             Scanner scanner = new Scanner(System.in);
             System.out.println(" Enter Letters ");
             // upper and lower case are okay!
+            scanner.useDelimiter("\n");
             String word = scanner.next().toUpperCase();
             // stop appication if Quit in entered
             if (word.equalsIgnoreCase(stop)) {
                 running = false;
-            } else { // if quit is not entered do this
-
+            } else if (word.equalsIgnoreCase("English to morse")){ // if quit is not entered do this
+                word = scanner.next().toUpperCase();
                 for (int i = 0; i < word.length(); i++) {
                     if (codeObject.codeHash.containsKey(word.substring(i, i + 1))) {
                         String symbols = codeObject.getCodeHash().get(word.substring(i, i + 1));
@@ -36,7 +40,22 @@ public class RunMorseCode extends MorseCode {
 
                 }
             }
+
+
+            else { // if quit is not entered do this
+
+//                for (int i = 0; i < word.length(); i++) {
+                    if (codeObject.codeHashMorsetoLetter.containsKey(word)) {
+                        String symbols = codeObject.getCodeHashMorsetoLetter().get(word);
+                        System.out.println(symbols);
+                    } else {
+                        System.out.println(idiotProof());
+                    }
+
+//                }
+            }
         }
+
 
     }
 

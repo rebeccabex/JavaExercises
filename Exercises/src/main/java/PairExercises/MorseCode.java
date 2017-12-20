@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class MorseCode {
     HashMap <String, String> codeHash;
+    HashMap <String, String> codeHashMorsetoLetter;
 
     public MorseCode() {
         // Hashmap of strings representing ex a = ..-...
@@ -45,6 +46,48 @@ public class MorseCode {
         codeHash.put("8","---..");
         codeHash.put("9","----.");
         codeHash.put("0","-----");
+        codeHash.put(" ", "/");
+
+        codeHashMorsetoLetter = new HashMap ();
+
+
+        codeHashMorsetoLetter.put(".-", "A");
+        codeHashMorsetoLetter.put("-...", "B");
+        codeHashMorsetoLetter.put("-.-.", "C");
+        codeHashMorsetoLetter.put("-..", "D");
+        codeHashMorsetoLetter.put(".", "E");
+        codeHashMorsetoLetter.put("..-.", "F");
+        codeHashMorsetoLetter.put("--.", "G");
+        codeHashMorsetoLetter.put("....", "H");
+        codeHashMorsetoLetter.put("..", "I");
+        codeHashMorsetoLetter.put(".---", "J");
+        codeHashMorsetoLetter.put("-.-", "K");
+        codeHashMorsetoLetter.put(".-.-", "L");
+        codeHashMorsetoLetter.put("--", "M");
+        codeHashMorsetoLetter.put("-.", "N");
+        codeHashMorsetoLetter.put("---", "O");
+        codeHashMorsetoLetter.put(".--.", "P");
+        codeHashMorsetoLetter.put("--.-", "Q");
+        codeHashMorsetoLetter.put(".-.", "R");
+        codeHashMorsetoLetter.put("...", "S");
+        codeHashMorsetoLetter.put("-", "T");
+        codeHashMorsetoLetter.put("..-", "U");
+        codeHashMorsetoLetter.put("...-", "V");
+        codeHashMorsetoLetter.put(".--", "W");
+        codeHashMorsetoLetter.put("-..-", "X");
+        codeHashMorsetoLetter.put("-.--", "Y");
+        codeHashMorsetoLetter.put("--..", "Z");
+        codeHashMorsetoLetter.put(".----", "1");
+        codeHashMorsetoLetter.put("..---", "2");
+        codeHashMorsetoLetter.put("...--", "3");
+        codeHashMorsetoLetter.put("....-", "4");
+        codeHashMorsetoLetter.put(".....", "5");
+        codeHashMorsetoLetter.put("-....", "6");
+        codeHashMorsetoLetter.put("--...", "7");
+        codeHashMorsetoLetter.put("---..", "8");
+        codeHashMorsetoLetter.put("----.", "9");
+        codeHashMorsetoLetter.put("-----", "0");
+        codeHashMorsetoLetter.put("/", " ");
 
     }
 
@@ -60,6 +103,10 @@ public class MorseCode {
 
 
 
+    }
+
+    public HashMap<String, String> getCodeHashMorsetoLetter() {
+        return codeHashMorsetoLetter;
     }
 
     public HashMap<String, String> getCodeHash() {
