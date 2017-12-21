@@ -14,23 +14,23 @@ public class ShipSet {
         Ship patrolBoat1 = new Ship("Patrol Boat 1", 2);
         shipList.add(patrolBoat1);
 
-        Ship patrolBoat2 = new Ship("Patrol Boat 2", 2);
-        shipList.add(patrolBoat2);
-
-        Ship destroyer1 = new Ship("Destroyer 1", 3);
-        shipList.add(destroyer1);
-
-        Ship destroyer2 = new Ship("Destroyer 2", 3);
-        shipList.add(destroyer2);
-
-        Ship submarine = new Ship("Submarine", 3);
-        shipList.add(submarine);
-
-        Ship battleship = new Ship("Battleship", 4);
-        shipList.add(battleship);
-
-        Ship carrier = new Ship("Carrier", 5);
-        shipList.add(carrier);
+//        Ship patrolBoat2 = new Ship("Patrol Boat 2", 2);
+//        shipList.add(patrolBoat2);
+//
+//        Ship destroyer1 = new Ship("Destroyer 1", 3);
+//        shipList.add(destroyer1);
+//
+//        Ship destroyer2 = new Ship("Destroyer 2", 3);
+//        shipList.add(destroyer2);
+//
+//        Ship submarine = new Ship("Submarine", 3);
+//        shipList.add(submarine);
+//
+//        Ship battleship = new Ship("Battleship", 4);
+//        shipList.add(battleship);
+//
+//        Ship carrier = new Ship("Carrier", 5);
+//        shipList.add(carrier);
 
     }
 

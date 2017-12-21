@@ -24,25 +24,6 @@ public class CommandParser {
         return guess;
     }
 
-    public String parseOrientation(String inputOrientation) {
-
-        String orientation;
-
-        switch (inputOrientation.toLowerCase().trim()) {
-            case "h":
-            case "horizontal":
-                orientation = "h";
-                break;
-            case "v":
-            case "vertical":
-                orientation = "v";
-                break;
-            default:
-                orientation = "invalid";
-        }
-        return orientation;
-    }
-
     public int parseInt(String intString) {
 
         int value = -1;

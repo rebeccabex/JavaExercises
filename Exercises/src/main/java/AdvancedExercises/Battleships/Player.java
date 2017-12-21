@@ -1,45 +1,32 @@
 package AdvancedExercises.Battleships;
 
-public class Player {
+public abstract class Player {
 
-    private Grid shipGrid;
-    private ShipSet shipSet;
+    protected int playerNo;
+    protected Grid shipGrid;
+    protected Grid targetGrid;
+    protected ShipSet shipSet;
 
-    public Player(int gridSize) {
+    public Player(int playerNo, int gridSize) {
+        this.playerNo = playerNo;
         shipGrid = new Grid(gridSize);
+        targetGrid = new Grid(gridSize);
         shipSet = new ShipSet();
     }
 
-    public boolean placeShip(Ship shipToPlace, int[] inputCoord, String orientationLetter) {
+    public abstract boolean setup();
 
-        boolean orientation = orientationLetter.equalsIgnoreCase("v");
+    public abstract boolean placeShip(Ship shipToPlace, int[] inputCoord, String orientationLetter);
 
-        return shipGrid.placeShip(shipToPlace, inputCoord[0], inputCoord[1], orientation);
-    }
+    public abstract int[] takeTurn();
 
     public Ship nextShipToPlace() {
         return shipSet.nextShipToPlace();
     }
 
-    public int takeShot(int[] inputCoord) {
+    public abstract int shotOutcome(int[] inputCoord, int outcome);
 
-        int x = inputCoord[0];
-        int y = inputCoord[1];
-
-        int actionValue = shipGrid.targetCoordinates(x, y);
-
-        if (actionValue == 1) {
-            Ship hitShip = shipSet.whichShipHit(x, y);
-            if (shipSet.isShipSunk(hitShip)) {
-                if (hasPlayerLost()) {
-                    actionValue = 5;
-                } else {
-                    actionValue = 4;
-                }
-            }
-        }
-        return actionValue;
-    }
+    public abstract int opponentShot(int[] inputCoord);
 
     public boolean hasPlayerLost() {
         return shipSet.allShipsSunk();
@@ -47,5 +34,9 @@ public class Player {
 
     public String getShipGridString() {
         return shipGrid.gridToString();
+    }
+
+    public String getTargetGridString() {
+        return targetGrid.gridToString();
     }
 }

@@ -20,10 +20,12 @@ public class Grid {
 
     public boolean placeShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
 
+        // check input x and y are in grid
         if (!validCoordinates(firstX, firstY)) {
             return false;
         }
 
+        // check entirety of ship is in grid
         if (northToSouth) {
             if (firstY + ship.getSize() > getSize()) {
                 return false;
@@ -34,6 +36,7 @@ public class Grid {
             }
         }
 
+        // check there is nothing already there where ship will be placed
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
                 if (grid[firstX][firstY + i] == 1) {
@@ -46,6 +49,7 @@ public class Grid {
             }
         }
 
+        // place ship on grid
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
                 grid[firstX][firstY + i] = 1;
@@ -54,6 +58,7 @@ public class Grid {
             }
         }
 
+        // sets ship's coordinates
         ship.placeShip(firstX, firstY, northToSouth);
 
         return true;
@@ -64,11 +69,16 @@ public class Grid {
         int spaceVal = -1;
         if (validCoordinates(x, y)) {
             spaceVal = grid[x][y];
-            if (spaceVal < 2 && spaceVal >= 0) {
-                grid[x][y] += 2;
-            }
         }
         return spaceVal;
+    }
+
+    public void updateGridSpace(int x, int y, boolean hit) {
+        if (hit) {
+            grid[x][y] = 3;
+        } else {
+            grid[x][y] = 2;
+        }
     }
 
     public boolean validCoordinates(int x, int y) {
