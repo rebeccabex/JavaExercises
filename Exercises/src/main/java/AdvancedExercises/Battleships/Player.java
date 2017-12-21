@@ -15,6 +15,7 @@ public class Player {
         Ship shipToPlace = shipSet.nextShipToPlace();
 
         for (int i = 0; i < initOrientations.length; i++) {
+            shipToPlace = shipSet.nextShipToPlace();
             boolean placed = shipGrid.placeShip(shipToPlace, initPlaces[i][0], initPlaces[i][1], initOrientations[i]);
             if (!placed) {
                 System.out.println("Invalid ship placement");

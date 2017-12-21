@@ -39,8 +39,8 @@ public class Battleships {
         };
 
         boolean[][] initOrientations = {
-                {true, false, true, false, true, false, true},
-                {false, true, false, true, false, true, false},
+                {true, false, true, false, true, true, true},
+                {false, true, false, true, false, false, false},
         };
 
         for (int i = 0; i < 2; i++) {
