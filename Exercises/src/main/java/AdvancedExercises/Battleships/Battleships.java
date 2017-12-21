@@ -26,13 +26,17 @@ public class Battleships {
 
     public void setup() {
 
-        for (int i = 0; i < 2; i++) {
+        Player player = new Human(1, gridSize, new CLInterface());
 
-            Player player = new Human(i + 1, gridSize, new CLInterface());
+        player.setup();
+        players.add(player);
 
-            player.setup();
-            players.add(player);
-        }
+        Player player2 = new AIPlayer(2, gridSize);
+
+        player2.setup();
+        players.add(player2);
+
+
     }
 
     public void playGame() {

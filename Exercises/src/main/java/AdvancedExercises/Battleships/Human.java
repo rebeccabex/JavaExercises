@@ -24,12 +24,13 @@ public class Human extends Player {
                 System.out.println("Invalid input. Try again");
             } else {
                 int[] coordinates = playerInterface.convertCoordinates(playerInput[0]);
-                String orientation = playerInterface.setOrientation(playerInput[1]);
+                String orientationString = playerInterface.setOrientation(playerInput[1]);
 
-                if (orientation.equalsIgnoreCase("invalid")){
+                if (orientationString.equalsIgnoreCase("invalid")){
                     System.out.println("Invalid orientation. Must type H for horizontal or V for vertical.");
                 } else {
-                    boolean placed = placeShip(nextShipToPlace, coordinates, orientation);
+                    boolean orientation = orientationString.equalsIgnoreCase("v");
+                    boolean placed = shipGrid.placeShip(nextShipToPlace, coordinates[0], coordinates[1], orientation);
                     if (!placed) {
                         System.out.println("Invalid ship placement");
                     }
@@ -41,14 +42,6 @@ public class Human extends Player {
         }
 
         return false;
-    }
-
-    @Override
-    public boolean placeShip(Ship shipToPlace, int[] inputCoord, String orientationLetter) {
-
-        boolean orientation = orientationLetter.equalsIgnoreCase("v");
-
-        return shipGrid.placeShip(shipToPlace, inputCoord[0], inputCoord[1], orientation);
     }
 
     @Override
@@ -74,45 +67,18 @@ public class Human extends Player {
     }
 
     @Override
-    public int opponentShot(int[] inputCoord) {
+    public void shotOutcome(int[] inputCoord, int outcome) {
 
-        int x = inputCoord[0];
-        int y = inputCoord[1];
-
-        int actionValue = shipGrid.targetCoordinates(x, y);
-
-        if (actionValue == 0) {
-            shipGrid.updateGridSpace(x, y, false);
-        } else if (actionValue == 1) {
-            shipGrid.updateGridSpace(x, y, true);
-        }
-
-        if (actionValue == 1) {
-            Ship hitShip = shipSet.whichShipHit(x, y);
-            if (shipSet.isShipSunk(hitShip)) {
-                if (hasPlayerLost()) {
-                    actionValue = 5;
-                } else {
-                    actionValue = 4;
-                }
-            }
-        }
-        System.out.println(playerInterface.actionText(actionValue));
-
-        return actionValue;
+        super.shotOutcome(inputCoord, outcome);
+        System.out.println(playerInterface.actionText(outcome));
     }
 
     @Override
-    public int shotOutcome(int[] inputCoord, int outcome) {
+    public int opponentShot(int[] inputCoord) {
 
-        boolean hit = false;
+        int actionValue = super.opponentShot(inputCoord);
+        System.out.println(playerInterface.actionText(actionValue));
 
-        if (outcome != 0) {
-            hit = true;
-        }
-
-        targetGrid.updateGridSpace(inputCoord[0], inputCoord[1], hit);
-
-        return 0;
+        return actionValue;
     }
 }

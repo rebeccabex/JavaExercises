@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6904f7a6-754a-4e93-971c-947311e1caaf" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/Battleships.class" afterPath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/Battleships.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/CommandParser.class" afterPath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/CommandParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/Player.class" afterPath="$PROJECT_DIR$/target/classes/AdvancedExercises/Battleships/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/CommandParser.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/CommandParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Grid.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Grid.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java" afterPath="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,21 +21,47 @@
       <file leaf-file-name="Battleships.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Human.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Human.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="72" column="64" lean-forward="false" selection-start-line="72" selection-start-column="64" selection-end-line="72" selection-end-column="64" />
               <folding>
                 <element signature="method#setup#0;class#Human#0" expanded="false" />
-                <element signature="method#placeShip#0;class#Human#0" expanded="false" />
+                <element signature="method#takeTurn#0;class#Human#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AIPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/AIPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="e#221#222#0" expanded="true" />
+                <element signature="e#262#263#0" expanded="true" />
+                <element signature="method#setup#0;class#AIPlayer#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="32" column="70" lean-forward="false" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+              <folding>
+                <element signature="method#opponentShot#0;class#Player#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -58,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShipSet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ShipSet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+            <state relative-caret-position="238">
+              <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/LibraryTestSuite.java" />
         <option value="$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/EditionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdventureGame/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdventureGame/Square.java" />
@@ -167,11 +187,12 @@
         <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/CommandParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/PlayerInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/CLInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Grid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/AIPlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java" />
       </list>
     </option>
   </component>
@@ -515,7 +536,7 @@
       <workItem from="1513591281771" duration="24582000" />
       <workItem from="1513674055711" duration="26072000" />
       <workItem from="1513760362541" duration="28669000" />
-      <workItem from="1513847049585" duration="21634000" />
+      <workItem from="1513847049585" duration="25655000" />
     </task>
     <servers />
   </component>
@@ -552,10 +573,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189619000" />
+    <option name="totallyTimeSpent" value="193640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -565,7 +587,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29257643" sideWeight="0.50714284" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3569869" sideWeight="0.4904762" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80458516" sideWeight="0.4904762" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -577,7 +599,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29257643" sideWeight="0.49285713" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45196506" sideWeight="0.49285713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -594,7 +616,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="83" />
+      <option name="time" value="90" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -603,14 +625,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/IntermediateExercises/LibraryTask/NewspaperTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -954,40 +968,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Ship.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1009,13 +994,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Battleships.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Human.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="109" column="24" lean-forward="false" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="24" />
+        <state relative-caret-position="153">
+          <caret line="72" column="64" lean-forward="false" selection-start-line="72" selection-start-column="64" selection-end-line="72" selection-end-column="64" />
           <folding>
             <element signature="method#setup#0;class#Human#0" expanded="false" />
-            <element signature="method#placeShip#0;class#Human#0" expanded="false" />
+            <element signature="method#takeTurn#0;class#Human#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/AIPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#262#263#0" expanded="true" />
+            <element signature="method#setup#0;class#AIPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="32" column="70" lean-forward="false" selection-start-line="32" selection-start-column="70" selection-end-line="32" selection-end-column="70" />
+          <folding>
+            <element signature="method#opponentShot#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AdvancedExercises/Battleships/ShipSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
