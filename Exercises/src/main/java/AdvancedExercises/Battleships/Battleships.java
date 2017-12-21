@@ -31,23 +31,43 @@ public class Battleships {
 
     public void setup() {
 
-        // Currently only placing size 2 ships
-        // To replace with ability to choose placement
-        int[][][] initPlaces = {
-                {{1, 1}, {0, 0}, {3, 3}, {6, 8}, {1, 7}, {9, 2}, {9, 7}},
-                {{1, 0}, {1, 2}, {9, 2}, {4, 6}, {5, 3}, {1, 9}, {3, 5}}
-        };
-
-        boolean[][] initOrientations = {
-                {true, false, true, false, true, true, true},
-                {false, true, false, true, false, false, false},
-        };
-
         for (int i = 0; i < 2; i++) {
+
             Player player = new Player(gridSize);
-            player.placeShips(initPlaces[i], initOrientations[i]);
+
+            System.out.println("Player " + (i+1) + "'s turn to place your ships" +
+                    "\nType in format x coordinate, y coordinate, H(orizontal)/V(ertical)");
+
+            Ship nextShipToPlace = player.nextShipToPlace();
+
+            while (nextShipToPlace != null) {
+
+                String playerInput = clInterface.playerInput("Where do you want to place your next ship? (" +
+                        nextShipToPlace.getName() + ", Length: " + nextShipToPlace.getSize() + ")");
+
+                // returns {x-coord, y-coord, orientation}
+                String[] parsedInput = commandParser.parseShipPlacement(playerInput);
+
+                if (parsedInput.length != 3) {
+                    System.out.println("Invalid input. Try again");
+                } else {
+                    int[] coordinates = commandParser.parseCoordinates(parsedInput[0] + "," + parsedInput[1]);
+
+                    String orientation = commandParser.parseOrientation(parsedInput[2]);
+                    if (orientation.equalsIgnoreCase("invalid")){
+                        System.out.println("Invalid orientation. Must type H for horizontal or V for vertical.");
+                    }
+
+                    boolean placed = player.placeShip(nextShipToPlace, coordinates, orientation);
+                    if (!placed) {
+                        System.out.println("Invalid ship placement");
+                    }
+
+                    nextShipToPlace = player.nextShipToPlace();
+                }
+                System.out.println(player.getShipGridString());
+            }
             players.add(player);
-            System.out.println(player.getShipGridString());
         }
     }
 
@@ -65,7 +85,7 @@ public class Battleships {
             if (playerInput.equalsIgnoreCase("quit")) {
                 playing = false;
             } else {
-                int[] guess = commandParser.parseGuess(playerInput);
+                int[] guess = commandParser.parseCoordinates(playerInput);
                 int actionValue = players.get(flipPlayers(turnPlayer)).takeShot(guess);
                 System.out.println(coordinateHitText(actionValue));
 

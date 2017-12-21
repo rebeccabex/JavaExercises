@@ -10,18 +10,15 @@ public class Player {
         shipSet = new ShipSet();
     }
 
-    // will edit when implement ability for user to input ship's places
-    public boolean placeShips(int[][] initPlaces, boolean[] initOrientations) {
-        Ship shipToPlace = shipSet.nextShipToPlace();
+    public boolean placeShip(Ship shipToPlace, int[] inputCoord, String orientationLetter) {
 
-        for (int i = 0; i < initOrientations.length; i++) {
-            shipToPlace = shipSet.nextShipToPlace();
-            boolean placed = shipGrid.placeShip(shipToPlace, initPlaces[i][0], initPlaces[i][1], initOrientations[i]);
-            if (!placed) {
-                System.out.println("Invalid ship placement");
-            }
-        }
-        return true;
+        boolean orientation = orientationLetter.equalsIgnoreCase("v");
+
+        return shipGrid.placeShip(shipToPlace, inputCoord[0], inputCoord[1], orientation);
+    }
+
+    public Ship nextShipToPlace() {
+        return shipSet.nextShipToPlace();
     }
 
     public int takeShot(int[] inputCoord) {

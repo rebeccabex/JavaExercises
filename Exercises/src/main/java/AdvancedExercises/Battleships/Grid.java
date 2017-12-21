@@ -1,7 +1,5 @@
 package AdvancedExercises.Battleships;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 public class Grid {
 
     private int size;
@@ -18,12 +16,13 @@ public class Grid {
                 grid[i][j] = 0;
             }
         }
-
     }
 
     public boolean placeShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
 
-        boolean valid = true;
+        if (!validCoordinates(firstX, firstY)) {
+            return false;
+        }
 
         if (northToSouth) {
             if (firstY + ship.getSize() > getSize()) {
@@ -57,21 +56,7 @@ public class Grid {
 
         ship.placeShip(firstX, firstY, northToSouth);
 
-        return valid;
-    }
-
-    public String gridToString() {
-
-        String gridString = "";
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                gridString += grid[j][i];
-            }
-            gridString += "\n";
-        }
-
-        return gridString;
+        return true;
     }
 
     public int targetCoordinates(int x, int y) {
@@ -95,8 +80,20 @@ public class Grid {
         if (y < 0 || y >= size) {
             return false;
         }
-
         return true;
+    }
+
+    public String gridToString() {
+
+        String gridString = "";
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                gridString += grid[j][i];
+            }
+            gridString += "\n";
+        }
+        return gridString;
     }
 
     public int getSize() {
