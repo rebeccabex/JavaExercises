@@ -7,12 +7,13 @@ import java.util.ArrayList;
 public class AIPlayer extends Player {
 
     RandomGenerator randGen = new RandomGenerator();
-    int[] target;
     ArrayList<int[]> targetArea;
+    int[] lastHit;
 
     public AIPlayer(int playerNo, String name, int gridSize) {
         super(playerNo, name, gridSize);
-        target = resetTarget();
+        targetArea = new ArrayList<>();
+        lastHit = new int[] {-1, -1};
     }
 
     @Override
@@ -53,7 +54,7 @@ public class AIPlayer extends Player {
 
         int[] playerGuess;
 
-        if (target[0] == -1) {
+        if (targetArea.isEmpty()) {
             playerGuess = randomGuess();
         } else {
             playerGuess = targettedGuess();
@@ -68,8 +69,8 @@ public class AIPlayer extends Player {
         int[] playerGuess = {-1, -1};
 
         while (!validGuess) {
-            playerGuess[0] = randGen.getRandomInt(targetGrid.getSize());
-            playerGuess[1] = randGen.getRandomInt(targetGrid.getSize());
+            playerGuess[0] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
+            playerGuess[1] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
 
             int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
 
@@ -98,8 +99,6 @@ public class AIPlayer extends Player {
                 targetArea.remove(randNum);
                 if (targetArea.isEmpty()) {
                     playerGuess = randomGuess();
-                    validGuess = true;
-                    target = resetTarget();
                 }
             }
         }
@@ -108,44 +107,59 @@ public class AIPlayer extends Player {
 
     @Override
     public void shotOutcome(int[] inputCoord, int outcome) {
+
         super.shotOutcome(inputCoord, outcome);
+
         if (outcome != 0) {
-            target = inputCoord;
-            setTargetArea(target);
-        } else {
-            target = resetTarget();
+            if (lastHit[0] != -1) {
+                updateTargetArea(inputCoord);
+            } else {
+                setTargetArea(inputCoord);
+            }
+            lastHit = inputCoord;
+            if (outcome == 4) {
+                lastHit[0] = -1;
+                lastHit[1] = -1;
+                targetArea.clear();
+            }
         }
     }
 
-    private int[] resetTarget() {
+    private void updateTargetArea(int[] currentHit) {
 
-        int[] blankArray = {-1, -1};
+        int[] temp = new int[2];
+        int xDiff = currentHit[0] - lastHit[0];
+        int yDiff = currentHit[1] - lastHit[1];
 
-        for (int i = 0; i < 2; i++) {
-            blankArray[i] = -1;
+        if(xDiff == 0 && Math.abs(yDiff) == 1) {
+            temp[0] = currentHit[0];
+            temp[1] = currentHit[1] + xDiff;
+            if (targetGrid.validCoordinates(temp[0], temp[1])) {
+                targetArea.add(temp);
+            }
+        } else if (yDiff == 0 && Math.abs(xDiff) == 1) {
+            temp[0] = currentHit[0] + yDiff;
+            temp[1] = currentHit[1];
+            if (targetGrid.validCoordinates(temp[0], temp[1])) {
+                targetArea.add(temp);
+            }
         }
-
-        return blankArray;
     }
 
-    // Need to correct targetArea
     private void setTargetArea(int[] target) {
 
-
+        // currently adds all cells around hit space
+        // even if already know which ship attacking
+        // (ie, could carry on in straight line, but not currently capable)
         int[][] plusMinus = {{-1, 0} ,{1, 0} ,{0, -1} ,{0, 1}};
 
-
         for (int i = 0; i < 4; i++) {
-
-
-
-//            int[] tempArray = {target[0], target[1]};
-//            for (int j = 0; j < 2; j++) {
-//                tempArray[j] = target[j] + plusMinus[i];
-//                if (tempArray[0] >= 0 || tempArray[0] < targetGrid.getSize() || tempArray[1] >= 0 || tempArray[1] < targetGrid.getSize()) {
-//                    targetArrayList.add(tempArray);
-//                }
-//            }
+			int[] tempArray = {target[0] + plusMinus[i][0], target[1] + plusMinus[i][1]};
+			if (targetGrid.validCoordinates(tempArray[0], tempArray[1])) {
+				if (targetGrid.targetCoordinates(tempArray[0], tempArray[1]) == 0) {
+					targetArea.add(tempArray);
+				}
+			}
         }
     }
 }
