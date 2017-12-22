@@ -72,16 +72,25 @@ public class CLInterface implements PlayerInterface {
         return coordinates;
     }
 
+    public String coordinateString(int[] coordinates) {
+
+        char letter = (char) (coordinates[0] + 'A');
+
+        String coordString = Character.toString(letter) + (coordinates[1] + 1);
+
+        return coordString;
+    }
+
     public String actionText(int actionValue) {
 
         String action = "";
 
         switch (actionValue) {
             case 0:
-                action = "You missed";
+                action = "Missed!";
                 break;
             case 1:
-                action = "You hit! Have another turn!";
+                action = "Hit! Have another turn!";
                 break;
             case 2:
                 action = "You've already tried that space and it was empty. Guess again.";
@@ -112,5 +121,9 @@ public class CLInterface implements PlayerInterface {
             System.out.println(intString + " is not an integer");
         }
         return value;
+    }
+
+    public void displayAction(String output) {
+        System.out.println(output);
     }
 }

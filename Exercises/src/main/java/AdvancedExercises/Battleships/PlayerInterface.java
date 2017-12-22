@@ -8,5 +8,7 @@ public interface PlayerInterface {
     int[] convertCoordinates(String alphanumericCoords);
     String setOrientation(String inputOrientation);
     String actionText(int actionValue);
+    void displayAction(String output);
+    String coordinateString(int[] coordinates);
 
 }

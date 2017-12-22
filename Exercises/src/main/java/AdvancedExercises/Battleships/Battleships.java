@@ -6,11 +6,12 @@ public class Battleships {
 
     private ArrayList<Player> players;
     private CommandParser commandParser;
+    private PlayerInterface playerInterface;
     private int gridSize;
 
     public Battleships() {
 
-        commandParser = new CommandParser();
+        playerInterface = new CLInterface();
 
         gridSize = 12;
         players = new ArrayList<>();
@@ -26,12 +27,13 @@ public class Battleships {
 
     public void setup() {
 
-        Player player = new Human(1, gridSize, new CLInterface());
+        Player player = new AIPlayer(1, "AI 1", gridSize);
+//        Player player = new Human(1, "Human", gridSize, playerInterface);
 
         player.setup();
         players.add(player);
 
-        Player player2 = new AIPlayer(2, gridSize);
+        Player player2 = new AIPlayer(2, "AI 2", gridSize);
 
         player2.setup();
         players.add(player2);
@@ -47,11 +49,20 @@ public class Battleships {
 
         while (playing) {
 
+            playerInterface.displayAction("\n" + players.get(turnPlayer).getName() + "'s turn");
             int[] guess = players.get(turnPlayer).takeTurn();
+
+            playerInterface.displayAction(playerInterface.coordinateString(guess));
+
             int actionValue = players.get(flipPlayers(turnPlayer)).opponentShot(guess);
             players.get(turnPlayer).shotOutcome(guess, actionValue);
+            playerInterface.displayAction(playerInterface.actionText(actionValue));
 
-            System.out.println(players.get(turnPlayer).getTargetGridString());
+            if (players.get(turnPlayer) instanceof Human) {
+                playerInterface.displayAction(players.get(turnPlayer).getTargetGridString());
+            } else {
+                playerInterface.displayAction(players.get(flipPlayers(turnPlayer)).getShipGridString());
+            }
 
             if (actionValue == 5) {
                 playing = false;

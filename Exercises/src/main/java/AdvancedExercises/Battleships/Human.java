@@ -4,8 +4,8 @@ public class Human extends Player {
 
     private PlayerInterface playerInterface;
 
-    public Human(int playerNo, int gridSize, PlayerInterface playerInterface) {
-        super(playerNo, gridSize);
+    public Human(int playerNo, String name, int gridSize, PlayerInterface playerInterface) {
+        super(playerNo, name, gridSize);
         this.playerInterface = playerInterface;
     }
 
@@ -64,21 +64,5 @@ public class Human extends Player {
         }
 
         return playerGuess;
-    }
-
-    @Override
-    public void shotOutcome(int[] inputCoord, int outcome) {
-
-        super.shotOutcome(inputCoord, outcome);
-        System.out.println(playerInterface.actionText(outcome));
-    }
-
-    @Override
-    public int opponentShot(int[] inputCoord) {
-
-        int actionValue = super.opponentShot(inputCoord);
-        System.out.println(playerInterface.actionText(actionValue));
-
-        return actionValue;
     }
 }

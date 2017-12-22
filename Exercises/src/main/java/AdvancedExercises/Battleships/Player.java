@@ -3,12 +3,14 @@ package AdvancedExercises.Battleships;
 public abstract class Player {
 
     protected int playerNo;
+    protected String name;
     protected Grid shipGrid;
     protected Grid targetGrid;
     protected ShipSet shipSet;
 
-    public Player(int playerNo, int gridSize) {
+    public Player(int playerNo, String name, int gridSize) {
         this.playerNo = playerNo;
+        this.name = name;
         shipGrid = new Grid(gridSize);
         targetGrid = new Grid(gridSize);
         shipSet = new ShipSet();
@@ -69,5 +71,9 @@ public abstract class Player {
 
     public String getTargetGridString() {
         return targetGrid.gridToString();
+    }
+
+    public String getName() {
+        return name;
     }
 }

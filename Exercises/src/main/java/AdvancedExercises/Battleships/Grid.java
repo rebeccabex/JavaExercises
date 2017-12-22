@@ -95,14 +95,34 @@ public class Grid {
 
     public String gridToString() {
 
-        String gridString = "";
+        String[] gridCode = {"~", "S", "'", "X"};
+
+        String gridString = "   ";
+
+        for (char i = 'A'; i < size + 'A'; i++) {
+            gridString += i + " ";
+        }
 
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                gridString += grid[j][i];
+            gridString += "\n" + (i + 1) + " ";
+            if (i < 9) {
+                gridString += " ";
             }
-            gridString += "\n";
+            for (int j = 0; j < size; j++) {
+                gridString += gridCode[grid[j][i]] + " ";
+            }
+            if (i < 9) {
+                gridString += " ";
+            }
+            gridString += " " + (i + 1);
         }
+
+        gridString += "\n   ";
+
+        for (char i = 'A'; i < size + 'A'; i++) {
+            gridString += i + " ";
+        }
+
         return gridString;
     }
 

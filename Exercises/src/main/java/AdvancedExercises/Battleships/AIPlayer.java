@@ -6,8 +6,8 @@ public class AIPlayer extends Player {
 
     RandomGenerator randGen = new RandomGenerator();
 
-    public AIPlayer(int playerNo, int gridSize) {
-        super(playerNo, gridSize);
+    public AIPlayer(int playerNo, String name, int gridSize) {
+        super(playerNo, name, gridSize);
     }
 
     @Override
@@ -44,6 +44,12 @@ public class AIPlayer extends Player {
         int[] playerGuess = {-1, -1};
 
         while (!validGuess) {
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Failed to sleep");
+            }
 
             playerGuess[0] = randGen.getRandomInt(targetGrid.getSize());
             playerGuess[1] = randGen.getRandomInt(targetGrid.getSize());
