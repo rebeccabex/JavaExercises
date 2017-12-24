@@ -95,7 +95,7 @@ public class Grid {
 
     public String gridToString() {
 
-        String[] gridCode = {"~", "S", "'", "X"};
+        String[] gridCode = {"~", "S", "/", "X"};
 
         String gridString = "   ";
 

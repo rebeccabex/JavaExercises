@@ -62,15 +62,15 @@ public class AIPlayer extends Player {
     @Override
     public int[] takeTurn() {
 
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            System.out.println("Failed to sleep");
-//        }
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+            System.out.println("Failed to sleep");
+        }
 
         int[] playerGuess = {-1, -1};
 
-        printSearchArrayLists();
+//        printSearchArrayLists();
         try {
             if (priorityTargetArea.isEmpty()) {
                 if (targetArea.isEmpty()) {
@@ -85,21 +85,6 @@ public class AIPlayer extends Player {
             e.printStackTrace();
         }
         return playerGuess;
-    }
-
-    private void printSearchArrayLists() {
-        System.out.println("toSearch (size " + toSearch.size() + ")");
-        for (int[] a : toSearch) {
-            System.out.println(a[0] + ", " + a[1]);
-        }
-        System.out.println("targetArea (size " + targetArea.size() + ")");
-        for (int[] a : targetArea) {
-            System.out.println(a[0] + ", " + a[1]);
-        }
-        System.out.println("priorityTargetArea (size " + priorityTargetArea.size() + ")");
-        for (int[] a : priorityTargetArea) {
-            System.out.println(a[0] + ", " + a[1]);
-        }
     }
 
     private int[] randomGuess() {
@@ -225,4 +210,18 @@ public class AIPlayer extends Player {
         }
     }
 
+    private void printSearchArrayLists() {
+        System.out.println("toSearch (size " + toSearch.size() + ")");
+        for (int[] a : toSearch) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
+        System.out.println("targetArea (size " + targetArea.size() + ")");
+        for (int[] a : targetArea) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
+        System.out.println("priorityTargetArea (size " + priorityTargetArea.size() + ")");
+        for (int[] a : priorityTargetArea) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
+    }
 }

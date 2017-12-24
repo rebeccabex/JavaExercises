@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Battleships {
 
     private ArrayList<Player> players;
-    private CommandParser commandParser;
     private PlayerInterface playerInterface;
     private int gridSize;
 
@@ -27,18 +26,34 @@ public class Battleships {
 
     public void setup() {
 
-        Player player = new AIPlayer(1, "AI 1", gridSize);
-//        Player player = new Human(1, "Human", gridSize, playerInterface);
+        String gameType = playerInterface.playerInput("What game do you want to play?" +
+                "\n1: Human vs Human" +
+                "\n2: Human vs AI" +
+                "\n3: AI vs AI");
 
-        player.setup();
-        players.add(player);
+        Player player1;
+        Player player2;
 
-        Player player2 = new AIPlayer(2, "AI 2", gridSize);
+        switch (gameType) {
+            case "1":
+                player1 = new Human(1, "Human", gridSize, playerInterface);
+                player2 = new Human(2, "Human", gridSize, playerInterface);
+                break;
+            case "2":
+            default:
+                player1 = new Human(1, "Human", gridSize, playerInterface);
+                player2 = new AIPlayer(2, "AI 1", gridSize);
+                break;
+            case "3":
+                player1 = new AIPlayer(1, "AI 1", gridSize);
+                player2 = new AIPlayer(2, "AI 2", gridSize);
+        }
+
+        player1.setup();
+        players.add(player1);
 
         player2.setup();
         players.add(player2);
-
-
     }
 
     public void playGame() {
@@ -50,6 +65,11 @@ public class Battleships {
         while (playing) {
 
             playerInterface.displayAction("\n" + players.get(turnPlayer).getName() + "'s turn");
+
+            if (players.get(turnPlayer) instanceof Human) {
+                playerInterface.displayAction(players.get(turnPlayer).getTargetGridString());
+            }
+
             int[] guess = players.get(turnPlayer).takeTurn();
 
             playerInterface.displayAction(playerInterface.coordinateString(guess));

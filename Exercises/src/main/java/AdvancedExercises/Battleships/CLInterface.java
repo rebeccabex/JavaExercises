@@ -31,11 +31,22 @@ public class CLInterface implements PlayerInterface {
 
     public int[] getPlayerGuess(int playerNo) {
 
-        String input = playerInput("Player " + playerNo + "'s turn." +
-                " Enter guess in form [letter][number] (eg A1) or enter 'QUIT' to exit:");
+        int[] guess = {-1, -1};
+        String input = "";
 
-        // validate input
+        while (guess[0] == -1) {
 
+            input = playerInput("Player " + playerNo + "'s turn." +
+                    " Enter guess in form [letter][number] (eg A1) or enter 'QUIT' to exit:");
+
+            if (input.length() == 2 || input.length() ==3) {
+                guess = convertCoordinates(input);
+            }
+            if (guess[0] == -1) {
+                System.out.println("Invalid input. Try again.");
+            }
+
+        }
         return convertCoordinates(input);
     }
 
@@ -64,10 +75,14 @@ public class CLInterface implements PlayerInterface {
 
     public int[] convertCoordinates(String alphanumericCoords) {
 
-        int[] coordinates = new int[2];
+        int[] coordinates = {-1, -1};
 
-        coordinates[0] = alphanumericCoords.toUpperCase().charAt(0) - 'A';
-        coordinates[1] = parseInt(alphanumericCoords.substring(1)) - 1;
+        char letterPart = alphanumericCoords.toUpperCase().charAt(0);
+        int numberPart = parseInt(alphanumericCoords.substring(1));
+        if (letterPart >= 'A' && letterPart < 'M' && numberPart != -1) {
+            coordinates[0] = letterPart - 'A';
+            coordinates[1] = numberPart - 1;
+        }
 
         return coordinates;
     }
