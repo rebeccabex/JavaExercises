@@ -7,13 +7,28 @@ import java.util.ArrayList;
 public class AIPlayer extends Player {
 
     RandomGenerator randGen = new RandomGenerator();
+    ArrayList<int[]> toSearch;
     ArrayList<int[]> targetArea;
+    ArrayList<int[]> priorityTargetArea;
     int[] lastHit;
 
     public AIPlayer(int playerNo, String name, int gridSize) {
         super(playerNo, name, gridSize);
+        toSearch = new ArrayList<>();
         targetArea = new ArrayList<>();
+        priorityTargetArea = new ArrayList<>();
         lastHit = new int[] {-1, -1};
+        initToSearch(gridSize);
+    }
+
+    public void initToSearch(int gridSize) {
+        for (int i = 0; i < gridSize; i++) {
+            for (int j = 0; j < gridSize; j+=2 ) {
+                int k = j + (i % 2);
+                int[] temp = {i, k};
+                toSearch.add(temp);
+            }
+        }
     }
 
     @Override
@@ -54,10 +69,14 @@ public class AIPlayer extends Player {
 
         int[] playerGuess;
 
-        if (targetArea.isEmpty()) {
-            playerGuess = randomGuess();
+        if (priorityTargetArea.isEmpty()) {
+            if (targetArea.isEmpty()) {
+                playerGuess = randomGuess();
+            } else {
+                playerGuess = targettedGuess(targetArea);
+            }
         } else {
-            playerGuess = targettedGuess();
+            playerGuess = targettedGuess(priorityTargetArea);
         }
 
         return playerGuess;
@@ -65,42 +84,45 @@ public class AIPlayer extends Player {
 
     private int[] randomGuess() {
 
-        boolean validGuess = false;
-        int[] playerGuess = {-1, -1};
+//        boolean validGuess = false;
 
-        while (!validGuess) {
-            playerGuess[0] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
-            playerGuess[1] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
+        int randNum = randGen.getRandomInt(toSearch.size());
+        int[] playerGuess = toSearch.get(randNum);
+        toSearch.remove(randNum);
 
-            int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
-
-            if (spaceVal == 0) {
-                validGuess = true;
-            }
-        }
+//        while (!validGuess) {
+//            playerGuess[0] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
+//            playerGuess[1] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
+//
+//            int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
+//
+//            if (spaceVal == 0) {
+//                validGuess = true;
+//            }
+//        }
         return playerGuess;
     }
 
-    private int[] targettedGuess() {
+    private int[] targettedGuess(ArrayList<int[]> coordList) {
 
         boolean validGuess = false;
         int[] playerGuess = {-1, -1};
 
         while (!validGuess) {
 
-            int randNum = randGen.getRandomInt(targetArea.size());
-            playerGuess = targetArea.get(randNum);
+            int randNum = randGen.getRandomInt(coordList.size());
+            playerGuess = coordList.get(randNum);
 
             int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
 
             if (spaceVal == 0) {
                 validGuess = true;
             } else {
-                targetArea.remove(randNum);
-                if (targetArea.isEmpty()) {
+                if (coordList.isEmpty()) {
                     playerGuess = randomGuess();
                 }
             }
+            coordList.remove(randNum);
         }
         return playerGuess;
     }
@@ -112,20 +134,20 @@ public class AIPlayer extends Player {
 
         if (outcome != 0) {
             if (lastHit[0] != -1) {
-                updateTargetArea(inputCoord);
+                setPriorityTargetArea(inputCoord);
             } else {
                 setTargetArea(inputCoord);
             }
             lastHit = inputCoord;
-            if (outcome == 4) {
-                lastHit[0] = -1;
-                lastHit[1] = -1;
-                targetArea.clear();
-            }
+//            if (outcome == 4) {
+//                lastHit[0] = -1;
+//                lastHit[1] = -1;
+//                targetArea.clear();
+//            }
         }
     }
 
-    private void updateTargetArea(int[] currentHit) {
+    private void setPriorityTargetArea(int[] currentHit) {
 
         int[] temp = new int[2];
         int xDiff = currentHit[0] - lastHit[0];
@@ -133,15 +155,23 @@ public class AIPlayer extends Player {
 
         if(xDiff == 0 && Math.abs(yDiff) == 1) {
             temp[0] = currentHit[0];
-            temp[1] = currentHit[1] + xDiff;
-            if (targetGrid.validCoordinates(temp[0], temp[1])) {
-                targetArea.add(temp);
-            }
+            temp[1] = currentHit[1] + yDiff;
+            addToPriorityTargetArea(temp);
         } else if (yDiff == 0 && Math.abs(xDiff) == 1) {
-            temp[0] = currentHit[0] + yDiff;
+            temp[0] = currentHit[0] + xDiff;
             temp[1] = currentHit[1];
-            if (targetGrid.validCoordinates(temp[0], temp[1])) {
-                targetArea.add(temp);
+            addToPriorityTargetArea(temp);
+        }
+    }
+
+    private void addToPriorityTargetArea(int[] coords) {
+        if (targetGrid.validCoordinates(coords[0], coords[1])) {
+            priorityTargetArea.add(coords);
+            if (targetArea.contains(coords)) {
+                targetArea.remove(coords);
+            }
+            if (toSearch.contains(coords)) {
+                toSearch.remove(coords);
             }
         }
     }
@@ -157,7 +187,9 @@ public class AIPlayer extends Player {
 			int[] tempArray = {target[0] + plusMinus[i][0], target[1] + plusMinus[i][1]};
 			if (targetGrid.validCoordinates(tempArray[0], tempArray[1])) {
 				if (targetGrid.targetCoordinates(tempArray[0], tempArray[1]) == 0) {
-					targetArea.add(tempArray);
+				    if (!targetArea.contains(tempArray)){
+                        targetArea.add(tempArray);
+                    }
 				}
 			}
         }
