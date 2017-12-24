@@ -1,8 +1,9 @@
 package AdvancedExercises.Battleships;
 
 import AdventureGame.RandomGenerator;
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class AIPlayer extends Player {
 
@@ -67,19 +68,38 @@ public class AIPlayer extends Player {
 //            System.out.println("Failed to sleep");
 //        }
 
-        int[] playerGuess;
+        int[] playerGuess = {-1, -1};
 
-        if (priorityTargetArea.isEmpty()) {
-            if (targetArea.isEmpty()) {
-                playerGuess = randomGuess();
+        printSearchArrayLists();
+        try {
+            if (priorityTargetArea.isEmpty()) {
+                if (targetArea.isEmpty()) {
+                    playerGuess = randomGuess();
+                } else {
+                    playerGuess = targettedGuess(targetArea);
+                }
             } else {
-                playerGuess = targettedGuess(targetArea);
+                playerGuess = targettedGuess(priorityTargetArea);
             }
-        } else {
-            playerGuess = targettedGuess(priorityTargetArea);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
-
         return playerGuess;
+    }
+
+    private void printSearchArrayLists() {
+        System.out.println("toSearch (size " + toSearch.size() + ")");
+        for (int[] a : toSearch) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
+        System.out.println("targetArea (size " + targetArea.size() + ")");
+        for (int[] a : targetArea) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
+        System.out.println("priorityTargetArea (size " + priorityTargetArea.size() + ")");
+        for (int[] a : priorityTargetArea) {
+            System.out.println(a[0] + ", " + a[1]);
+        }
     }
 
     private int[] randomGuess() {
@@ -133,17 +153,18 @@ public class AIPlayer extends Player {
         super.shotOutcome(inputCoord, outcome);
 
         if (outcome != 0) {
-            if (lastHit[0] != -1) {
-                setPriorityTargetArea(inputCoord);
+            lastHit = inputCoord;
+            if (outcome == 4) {
+                lastHit[0] = -1;
+                lastHit[1] = -1;
+                targetArea.addAll(priorityTargetArea);
+                priorityTargetArea.clear();
             } else {
                 setTargetArea(inputCoord);
+                if (lastHit[0] != -1) {
+                    setPriorityTargetArea(inputCoord);
+                }
             }
-            lastHit = inputCoord;
-//            if (outcome == 4) {
-//                lastHit[0] = -1;
-//                lastHit[1] = -1;
-//                targetArea.clear();
-//            }
         }
     }
 
@@ -167,12 +188,8 @@ public class AIPlayer extends Player {
     private void addToPriorityTargetArea(int[] coords) {
         if (targetGrid.validCoordinates(coords[0], coords[1])) {
             priorityTargetArea.add(coords);
-            if (targetArea.contains(coords)) {
-                targetArea.remove(coords);
-            }
-            if (toSearch.contains(coords)) {
-                toSearch.remove(coords);
-            }
+            removeFromArray(targetArea, coords);
+            removeFromArray(toSearch, coords);
         }
     }
 
@@ -187,11 +204,25 @@ public class AIPlayer extends Player {
 			int[] tempArray = {target[0] + plusMinus[i][0], target[1] + plusMinus[i][1]};
 			if (targetGrid.validCoordinates(tempArray[0], tempArray[1])) {
 				if (targetGrid.targetCoordinates(tempArray[0], tempArray[1]) == 0) {
-				    if (!targetArea.contains(tempArray)){
+				    if (!(targetArea.contains(tempArray) || priorityTargetArea.contains(tempArray))){
                         targetArea.add(tempArray);
                     }
+                    removeFromArray(toSearch, tempArray);
 				}
 			}
         }
     }
+
+    private void removeFromArray(ArrayList<int[]> searchList, int[] coords) {
+
+        Iterator<int[]> iter = searchList.iterator();
+
+        while (iter.hasNext()) {
+            int[] listCoords = iter.next();
+            if (Arrays.equals(listCoords, coords)) {
+                iter.remove();
+            }
+        }
+    }
+
 }
