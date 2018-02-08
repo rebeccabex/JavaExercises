@@ -42,7 +42,7 @@ public class FileWorker {
 
     public void writeToFile(Person person) {
 
-        String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + person.getName() + ".txt";
+        String filename = person.getName() + ".txt";
         String data = person.toString();
 
         fileWriter(filename, data);
@@ -87,7 +87,7 @@ public class FileWorker {
 
         for (String name : nameList) {
 
-            String filename = "C:\\Users\\Admin\\JavaExercises\\Exercises\\" + name + ".txt";
+            String filename = name + ".txt";
 
             ArrayList<String> stringArray = fileReader(filename);
 

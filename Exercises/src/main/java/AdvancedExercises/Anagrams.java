@@ -2,14 +2,13 @@ package AdvancedExercises;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Anagrams {
 
     public HashMap<String, ArrayList<String>> createHashMap(ArrayList<String> wordList) {
 
-        HashMap<String, ArrayList<String>> anagramsMap = new HashMap<String, ArrayList<String>>();
+        HashMap<String, ArrayList<String>> anagramsMap = new HashMap<>();
 
         WordSort ws = new WordSort();
 

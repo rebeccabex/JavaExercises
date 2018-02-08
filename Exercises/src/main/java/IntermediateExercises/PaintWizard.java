@@ -10,9 +10,9 @@ public class PaintWizard {
 
          paintList = new ArrayList<Paint>();
 
-        Paint cheapoMax = new Paint("CheapoMax", 20, 19.99, 10);
-        Paint averageJoes = new Paint("AverageJoes", 15, 17.99, 11);
-        Paint duluxourousPaints = new Paint("DuluxourousPaints", 10, 25, 20);
+        Paint cheapoMax = new Paint("CheapoMax", 20, 1999, 10);
+        Paint averageJoes = new Paint("AverageJoes", 15, 1799, 11);
+        Paint duluxourousPaints = new Paint("DuluxourousPaints", 10, 2500, 20);
 
         paintList.add(cheapoMax);
         paintList.add(averageJoes);
@@ -22,12 +22,12 @@ public class PaintWizard {
 
     public Paint cheapestPaint(int roomSize) {
 
-        double lowestCost = -1;
+        int lowestCost = -1;
         Paint bestValue = null;
 
         for(Paint p : paintList) {
-            double cost = p.costToPaint(roomSize);
-            if (lowestCost == -1 || cost < lowestCost) {
+            int cost = p.costToPaint(roomSize);
+            if (lowestCost < 0 || cost < lowestCost) {
                 lowestCost = cost;
                 bestValue = p;
             }

@@ -4,10 +4,10 @@ public class Paint{
 
     private String name;
     private int capacity;
-    private double price;
+    private int price;
     private int coverage;
 
-    Paint(String name, int capacity, double price, int coverage) {
+    Paint(String name, int capacity, int price, int coverage) {
 
         this.name = name;
         this.capacity = capacity;
@@ -36,7 +36,7 @@ public class Paint{
 
     }
 
-    public double costToPaint(int area) {
+    public int costToPaint(int area) {
 
         return price * tinsToBuy(area);
 
@@ -51,14 +51,14 @@ public class Paint{
     public String getReceipt(int area) {
 
         int tins = tinsToBuy(area);
-        double cost = costToPaint(area);
+        int cost = costToPaint(area);
         int waste = wastedPaint(area);
 
         String receipt = "Brand: " + name;
         receipt += "\nCapacity: " + capacity;
-        receipt += "\nPrice per tin: " + price;
+        receipt += "\nPrice per tin: £" + (price / 100) + "." + (price % 100);
         receipt += "\nNumber of tins: " + tins;
-        receipt += "\nTotal cost: " + cost;
+        receipt += "\nTotal cost: £" + (cost / 100) + "." + (cost % 100);
         receipt += "\nWaste: " + waste;
 
         return receipt;

@@ -13,7 +13,7 @@ public class UniqueSum {
                     sum += y;
                     sum += z;
                 }
-            } else if (y != z) {
+            } else {
                 sum += y;
             }
         } else if (y != z) {
