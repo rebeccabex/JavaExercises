@@ -74,7 +74,7 @@ public class Battleships {
 
             playerInterface.displayAction(playerInterface.coordinateString(guess));
 
-            int actionValue = players.get(flipPlayers(turnPlayer)).opponentShot(guess);
+            GridSpace actionValue = players.get(flipPlayers(turnPlayer)).opponentShot(guess);
             players.get(turnPlayer).shotOutcome(guess, actionValue);
             playerInterface.displayAction(playerInterface.actionText(actionValue));
 
@@ -84,10 +84,10 @@ public class Battleships {
                 playerInterface.displayAction(players.get(flipPlayers(turnPlayer)).getShipGridString());
             }
 
-            if (actionValue == 5) {
+            if (actionValue.equals(GridSpace.WON)) {
                 playing = false;
             } else {
-                if (actionValue == 0) {
+                if (actionValue.equals(GridSpace.EMPTY)) {
                     turnPlayer = flipPlayers(turnPlayer);
                 }
             }

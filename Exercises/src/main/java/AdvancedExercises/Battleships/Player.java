@@ -24,37 +24,37 @@ public abstract class Player {
         return shipSet.nextShipToPlace();
     }
 
-    public void shotOutcome(int[] inputCoord, int outcome) {
+    public void shotOutcome(int[] inputCoord, GridSpace outcome) {
 
         boolean hit = false;
 
-        if (outcome != 0) {
+        if (!outcome.equals(GridSpace.EMPTY)) {
             hit = true;
         }
 
         targetGrid.updateGridSpace(inputCoord[0], inputCoord[1], hit);
     }
 
-    public int opponentShot(int[] inputCoord) {
+    public GridSpace opponentShot(int[] inputCoord) {
 
         int x = inputCoord[0];
         int y = inputCoord[1];
 
-        int actionValue = shipGrid.targetCoordinates(x, y);
+        GridSpace actionValue = shipGrid.targetCoordinates(x, y);
 
-        if (actionValue == 0) {
+        if (actionValue.equals(GridSpace.EMPTY)) {
             shipGrid.updateGridSpace(x, y, false);
-        } else if (actionValue == 1) {
+        } else if (actionValue.equals(GridSpace.SHIP)) {
             shipGrid.updateGridSpace(x, y, true);
         }
 
-        if (actionValue == 1) {
+        if (actionValue.equals(GridSpace.SHIP)) {
             Ship hitShip = shipSet.whichShipHit(x, y);
             if (shipSet.isShipSunk(hitShip)) {
                 if (hasPlayerLost()) {
-                    actionValue = 5;
+                    actionValue = GridSpace.WON;
                 } else {
-                    actionValue = 4;
+                    actionValue = GridSpace.SUNK;
                 }
             }
         }

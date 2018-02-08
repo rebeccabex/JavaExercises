@@ -6,16 +6,16 @@ public class Grid {
 
     private int size;
     // 0-empty sea; 1-part of ship; 2-miss; 3-hit
-    private int[][] gameGrid;
+    private GridSpace[][] gameGrid;
 
     public Grid(int size) {
 
-        gameGrid = new int[size][size];
+        gameGrid = new GridSpace[size][size];
 
         this.size = size;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                gameGrid[i][j] = 0;
+                gameGrid[i][j] = GridSpace.EMPTY;
             }
         }
     }
@@ -41,11 +41,11 @@ public class Grid {
         // check there is nothing already there where ship will be placed
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
-                if (gameGrid[firstX][firstY + i] == 1) {
+                if (gameGrid[firstX][firstY + i].equals(GridSpace.SHIP)) {
                     return false;
                 }
             } else {
-                if (gameGrid[firstX + i][firstY] == 1) {
+                if (gameGrid[firstX + i][firstY].equals(GridSpace.SHIP)) {
                     return false;
                 }
             }
@@ -54,9 +54,9 @@ public class Grid {
         // place ship on grid
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
-                gameGrid[firstX][firstY + i] = 1;
+                gameGrid[firstX][firstY + i] = (GridSpace.SHIP);
             } else {
-                gameGrid[firstX + i][firstY] = 1;
+                gameGrid[firstX + i][firstY] = (GridSpace.SHIP);
             }
         }
 
@@ -66,9 +66,9 @@ public class Grid {
         return true;
     }
 
-    public int targetCoordinates(int x, int y) {
+    public GridSpace targetCoordinates(int x, int y) {
 
-        int spaceVal = -1;
+        GridSpace spaceVal = GridSpace.INVALID;
         if (validCoordinates(x, y)) {
             spaceVal = gameGrid[x][y];
         }
@@ -77,9 +77,9 @@ public class Grid {
 
     public void updateGridSpace(int x, int y, boolean hit) {
         if (hit) {
-            gameGrid[x][y] = 3;
+            gameGrid[x][y] = GridSpace.HIT;
         } else {
-            gameGrid[x][y] = 2;
+            gameGrid[x][y] = GridSpace.MISS;
         }
     }
 
@@ -98,8 +98,6 @@ public class Grid {
 
     public String gridToString() {
 
-        String[] gridCode = {"~", "S", "/", "X"};
-
         String gridString = "   ";
 
         for (char i = 'A'; i < size + 'A'; i++) {
@@ -112,7 +110,7 @@ public class Grid {
                 gridString += " ";
             }
             for (int j = 0; j < size; j++) {
-                gridString += gridCode[gameGrid[j][i]] + " ";
+                gridString += gridCode(gameGrid[j][i]) + " ";
             }
             if (i < 9) {
                 gridString += " ";
@@ -128,6 +126,23 @@ public class Grid {
 
         return gridString;
     }
+
+
+    public String gridCode(GridSpace spaceValue) {
+        switch (spaceValue) {
+            case EMPTY:
+                return "~";
+            case SHIP:
+                return "S";
+            case MISS:
+                return "/";
+            case HIT:
+                return "X";
+            default:
+                return  "?";
+        }
+    }
+
 
     public int getSize() {
         return size;

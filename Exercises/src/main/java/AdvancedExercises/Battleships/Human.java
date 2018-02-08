@@ -54,9 +54,9 @@ public class Human extends Player {
 
             playerGuess = playerInterface.getPlayerGuess(playerNo);
 
-            int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
+            GridSpace spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
 
-            if (spaceVal == 0) {
+            if (spaceVal.equals(GridSpace.EMPTY)) {
                 validGuess = true;
             } else {
                 System.out.println(playerInterface.actionText(spaceVal));

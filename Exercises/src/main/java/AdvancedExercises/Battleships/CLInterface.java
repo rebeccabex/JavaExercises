@@ -89,27 +89,27 @@ public class CLInterface implements PlayerInterface {
         return Character.toString(letter) + (coordinates[1] + 1);
     }
 
-    public String actionText(int actionValue) {
+    public String actionText(GridSpace spaceAction) {
 
         String action;
 
-        switch (actionValue) {
-            case 0:
+        switch (spaceAction) {
+            case EMPTY:
                 action = "Missed!";
                 break;
-            case 1:
+            case SHIP:
                 action = "Hit! Have another turn!";
                 break;
-            case 2:
+            case MISS:
                 action = "You've already tried that space and it was empty. Guess again.";
                 break;
-            case 3:
+            case HIT:
                 action = "You've already tried that space and it was a hit. Guess again.";
                 break;
-            case 4:
+            case SUNK:
                 action = "You hit and sunk your opponent's ship! Have another turn!";
                 break;
-            case 5:
+            case WON:
                 action = "Congratulations! You sunk all of your opponent's ships! You win!";
                 break;
             default:

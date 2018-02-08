@@ -7,7 +7,7 @@ public interface PlayerInterface {
     int[] getPlayerGuess(int playerNo);
     int[] convertCoordinates(String alphanumericCoords);
     String setOrientation(String inputOrientation);
-    String actionText(int actionValue);
+    String actionText(GridSpace spaceAction);
     void displayAction(String output);
     String coordinateString(int[] coordinates);
 
