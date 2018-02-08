@@ -70,7 +70,6 @@ public class AIPlayer extends Player {
 
         int[] playerGuess = {-1, -1};
 
-//        printSearchArrayLists();
         try {
             if (priorityTargetArea.isEmpty()) {
                 if (targetArea.isEmpty()) {
@@ -89,22 +88,10 @@ public class AIPlayer extends Player {
 
     private int[] randomGuess() {
 
-//        boolean validGuess = false;
-
         int randNum = randGen.getRandomInt(toSearch.size());
         int[] playerGuess = toSearch.get(randNum);
         toSearch.remove(randNum);
 
-//        while (!validGuess) {
-//            playerGuess[0] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
-//            playerGuess[1] = randGen.getRandomInt(targetGrid.getSize() / 2) * 2;
-//
-//            int spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
-//
-//            if (spaceVal == 0) {
-//                validGuess = true;
-//            }
-//        }
         return playerGuess;
     }
 
@@ -199,15 +186,7 @@ public class AIPlayer extends Player {
     }
 
     private void removeFromArray(ArrayList<int[]> searchList, int[] coords) {
-
-        Iterator<int[]> iter = searchList.iterator();
-
-        while (iter.hasNext()) {
-            int[] listCoords = iter.next();
-            if (Arrays.equals(listCoords, coords)) {
-                iter.remove();
-            }
-        }
+        searchList.removeIf((int[] listCoords) -> Arrays.equals(listCoords, coords));
     }
 
     private void printSearchArrayLists() {

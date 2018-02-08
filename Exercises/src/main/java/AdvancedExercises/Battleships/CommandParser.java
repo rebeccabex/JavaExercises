@@ -3,11 +3,7 @@ package AdvancedExercises.Battleships;
 public class CommandParser {
 
     public String[] parseShipPlacement(String placementString) {
-
-        String[] stringArray = placementString.split(",");
-
-
-        return stringArray;
+        return placementString.split(",");
     }
 
     public int[] parseCoordinates(String guessString) {

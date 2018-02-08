@@ -14,11 +14,8 @@ public class CLInterface implements PlayerInterface {
     }
 
     public String playerInput(String prompt) {
-
         System.out.println(prompt);
-
         return reader.next();
-
     }
 
     public String[] readShipPlacement(Ship ship) {
@@ -88,17 +85,13 @@ public class CLInterface implements PlayerInterface {
     }
 
     public String coordinateString(int[] coordinates) {
-
         char letter = (char) (coordinates[0] + 'A');
-
-        String coordString = Character.toString(letter) + (coordinates[1] + 1);
-
-        return coordString;
+        return Character.toString(letter) + (coordinates[1] + 1);
     }
 
     public String actionText(int actionValue) {
 
-        String action = "";
+        String action;
 
         switch (actionValue) {
             case 0:
@@ -121,7 +114,6 @@ public class CLInterface implements PlayerInterface {
                 break;
             default:
                 action = "Invalid coordinates.";
-//                action = "Invalid coordinates. Must be between 0 and " + (gridSize - 1);
         }
         return action;
     }
