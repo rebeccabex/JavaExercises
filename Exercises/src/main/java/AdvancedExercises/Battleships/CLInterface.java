@@ -26,12 +26,12 @@ public class CLInterface implements PlayerInterface {
         return input.split(",");
     }
 
-    public int[] getPlayerGuess(int playerNo) {
+    public Coordinates getPlayerGuess(int playerNo) {
 
-        int[] guess = {-1, -1};
+        Coordinates guess = new Coordinates(-1, -1);
         String input = "";
 
-        while (guess[0] == -1) {
+        while (!guess.isValid()) {
 
             input = playerInput("Player " + playerNo + "'s turn." +
                     " Enter guess in form [letter][number] (eg A1) or enter 'QUIT' to exit:");
@@ -39,7 +39,7 @@ public class CLInterface implements PlayerInterface {
             if (input.length() == 2 || input.length() ==3) {
                 guess = convertCoordinates(input);
             }
-            if (guess[0] == -1) {
+            if (!guess.isValid()) {
                 System.out.println("Invalid input. Try again.");
             }
 
@@ -70,23 +70,23 @@ public class CLInterface implements PlayerInterface {
         reader.useDelimiter(delimiter);
     }
 
-    public int[] convertCoordinates(String alphanumericCoords) {
+    public Coordinates convertCoordinates(String alphanumericCoords) {
 
-        int[] coordinates = {-1, -1};
+        Coordinates coordinates = new Coordinates(-1, -1);
 
         char letterPart = alphanumericCoords.toUpperCase().charAt(0);
         int numberPart = parseInt(alphanumericCoords.substring(1));
-        if (letterPart >= 'A' && letterPart < 'M' && numberPart != -1) {
-            coordinates[0] = letterPart - 'A';
-            coordinates[1] = numberPart - 1;
+        if (letterPart >= 'A' && letterPart < 'M' && numberPart > 0 && numberPart <= 12) {
+            coordinates.setX(letterPart - 'A');
+            coordinates.setY(numberPart - 1);
         }
 
         return coordinates;
     }
 
-    public String coordinateString(int[] coordinates) {
-        char letter = (char) (coordinates[0] + 'A');
-        return Character.toString(letter) + (coordinates[1] + 1);
+    public String coordinateString(Coordinates coordinates) {
+        char letter = (char) (coordinates.getX() + 'A');
+        return Character.toString(letter) + (coordinates.getY() + 1);
     }
 
     public String actionText(GridSpace spaceAction) {

@@ -18,13 +18,13 @@ public abstract class Player {
 
     public abstract boolean setup();
 
-    public abstract int[] takeTurn();
+    public abstract Coordinates takeTurn();
 
     public Ship nextShipToPlace() {
         return shipSet.nextShipToPlace();
     }
 
-    public void shotOutcome(int[] inputCoord, GridSpace outcome) {
+    public void shotOutcome(Coordinates inputCoord, GridSpace outcome) {
 
         boolean hit = false;
 
@@ -32,24 +32,22 @@ public abstract class Player {
             hit = true;
         }
 
-        targetGrid.updateGridSpace(inputCoord[0], inputCoord[1], hit);
+        targetGrid.updateGridSpace(inputCoord, hit);
     }
 
-    public GridSpace opponentShot(int[] inputCoord) {
+    public GridSpace opponentShot(Coordinates inputCoord) {
 
-        int x = inputCoord[0];
-        int y = inputCoord[1];
-
-        GridSpace actionValue = shipGrid.targetCoordinates(x, y);
+        GridSpace actionValue = shipGrid.targetCoordinates(inputCoord);
 
         if (actionValue.equals(GridSpace.EMPTY)) {
-            shipGrid.updateGridSpace(x, y, false);
+            shipGrid.updateGridSpace(inputCoord, false);
         } else if (actionValue.equals(GridSpace.SHIP)) {
-            shipGrid.updateGridSpace(x, y, true);
+            shipGrid.updateGridSpace(inputCoord, true);
         }
 
         if (actionValue.equals(GridSpace.SHIP)) {
-            Ship hitShip = shipSet.whichShipHit(x, y);
+            Ship hitShip = shipSet.whichShipHit(inputCoord);
+
             if (shipSet.isShipSunk(hitShip)) {
                 if (hasPlayerLost()) {
                     actionValue = GridSpace.WON;

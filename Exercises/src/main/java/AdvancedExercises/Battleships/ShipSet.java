@@ -43,10 +43,10 @@ public class ShipSet {
         return null;
     }
 
-    public Ship whichShipHit(int x, int y) {
+    public Ship whichShipHit(Coordinates coords) {
 
         for (Ship ship : shipList) {
-            if (ship.shipHit(x, y)) {
+            if (ship.shipHit(coords)) {
                 return ship;
             }
         }

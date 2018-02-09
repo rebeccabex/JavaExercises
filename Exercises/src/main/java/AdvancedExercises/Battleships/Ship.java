@@ -4,7 +4,7 @@ public class Ship {
 
     private String name;
     private int size;
-    private int[][] coordinates;
+    private Coordinates[] shipCoords;
     private boolean placed;
     private int hits;
     private boolean sunk;
@@ -13,32 +13,32 @@ public class Ship {
 
         this.name = name;
         this.size = size;
-        coordinates = new int[size][2];
+        shipCoords = new Coordinates[size];
         placed = false;
         hits = 0;
         sunk = false;
 
     }
 
-    public void placeShip(int firstX, int firstY, boolean northToSouth) {
+    public void placeShip(Coordinates coords, boolean northToSouth) {
 
         for (int i = 0; i < size; i++) {
+            Coordinates addCoords;
             if (northToSouth) {
-                coordinates[i][0] = firstX;
-                coordinates[i][1] = firstY + i;
+                addCoords = new Coordinates(coords.getX(), coords.getY() + 1);
             } else {
-                coordinates[i][0] = firstX + i;
-                coordinates[i][1] = firstY;
+                addCoords = new Coordinates(coords.getX() + 1, coords.getY());
             }
+            shipCoords[i] = addCoords;
         }
 
         placed = true;
     }
 
-    public boolean shipHit(int x, int y) {
+    public boolean shipHit(Coordinates coords) {
 
         for (int i = 0; i < size; i++) {
-            if (coordinates[i][0] == x && coordinates[i][1] == y) {
+            if (shipCoords[i].equals(coords)) {
                 hits++;
                 return true;
             }
@@ -58,8 +58,8 @@ public class Ship {
         return size;
     }
 
-    public int[][] getCoordinates() {
-        return coordinates;
+    public Coordinates[] getShipCoords() {
+        return shipCoords;
     }
 
     public boolean isSunk() {

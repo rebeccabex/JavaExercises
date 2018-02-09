@@ -4,11 +4,11 @@ public interface PlayerInterface {
 
     String playerInput(String prompt);
     String[] readShipPlacement(Ship ship);
-    int[] getPlayerGuess(int playerNo);
-    int[] convertCoordinates(String alphanumericCoords);
+    Coordinates getPlayerGuess(int playerNo);
+    Coordinates convertCoordinates(String alphanumericCoords);
     String setOrientation(String inputOrientation);
     String actionText(GridSpace spaceAction);
     void displayAction(String output);
-    String coordinateString(int[] coordinates);
+    String coordinateString(Coordinates coordinates);
 
 }

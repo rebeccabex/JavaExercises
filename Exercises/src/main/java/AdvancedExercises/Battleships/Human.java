@@ -23,14 +23,14 @@ public class Human extends Player {
             if (playerInput.length != 2) {
                 System.out.println("Invalid input. Try again");
             } else {
-                int[] coordinates = playerInterface.convertCoordinates(playerInput[0]);
+                Coordinates coordinates = playerInterface.convertCoordinates(playerInput[0]);
                 String orientationString = playerInterface.setOrientation(playerInput[1]);
 
                 if (orientationString.equalsIgnoreCase("invalid")){
                     System.out.println("Invalid orientation. Must type H for horizontal or V for vertical.");
                 } else {
                     boolean orientation = orientationString.equalsIgnoreCase("v");
-                    boolean placed = shipGrid.checkLocationAndPlaceShip(nextShipToPlace, coordinates[0], coordinates[1], orientation);
+                    boolean placed = shipGrid.checkLocationAndPlaceShip(nextShipToPlace, coordinates, orientation);
                     if (!placed) {
                         System.out.println("Invalid ship placement");
                     }
@@ -45,16 +45,16 @@ public class Human extends Player {
     }
 
     @Override
-    public int[] takeTurn() {
+    public Coordinates takeTurn() {
 
         boolean validGuess = false;
-        int[] playerGuess = {-1, -1};
+        Coordinates playerGuess = new Coordinates(-1, -1);
 
         while (!validGuess) {
 
             playerGuess = playerInterface.getPlayerGuess(playerNo);
 
-            GridSpace spaceVal = targetGrid.targetCoordinates(playerGuess[0], playerGuess[1]);
+            GridSpace spaceVal = targetGrid.targetCoordinates(playerGuess);
 
             if (spaceVal.equals(GridSpace.EMPTY)) {
                 validGuess = true;

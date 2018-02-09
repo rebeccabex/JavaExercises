@@ -1,111 +1,110 @@
 package AdvancedExercises.Battleships;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Grid {
 
     private int size;
-    // 0-empty sea; 1-part of ship; 2-miss; 3-hit
-    private GridSpace[][] gameGrid;
+    private HashMap<Coordinates, GridSpace> gameGrid;
 
     public Grid(int size) {
 
-        gameGrid = new GridSpace[size][size];
+        gameGrid = new HashMap<>();
 
         this.size = size;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                gameGrid[i][j] = GridSpace.EMPTY;
+                Coordinates coords = new Coordinates(i, j);
+                gameGrid.put(coords, GridSpace.EMPTY);
             }
         }
     }
 
-    public boolean checkLocationAndPlaceShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
+    public boolean checkLocationAndPlaceShip(Ship ship, Coordinates firstCoords, boolean northToSouth) {
 
-        if (shipFitsOnGrid(ship, firstX, firstY, northToSouth)) {
+        if (!shipFitsOnGrid(ship, firstCoords, northToSouth)) {
             return false;
         }
 
-        if (!locationIsClear(ship, firstX, firstY, northToSouth)) {
+        if (!locationIsClear(ship, firstCoords, northToSouth)) {
             return false;
         }
 
-        placeShip(ship, firstX, firstY, northToSouth);
+        placeShip(ship, firstCoords, northToSouth);
 
         return true;
     }
 
-    private boolean shipFitsOnGrid(Ship ship, int firstX, int firstY, boolean northToSouth) {
-        if (!validCoordinates(firstX, firstY)) {
+    private boolean shipFitsOnGrid(Ship ship, Coordinates firstCoords, boolean northToSouth) {
+        if (!validCoordinates(firstCoords)) {
             return false;
         }
 
         if (northToSouth) {
-            if (firstY + ship.getSize() > getSize()) {
+            if (firstCoords.getY() + ship.getSize() > getSize()) {
                 return false;
             }
         } else {
-            if (firstX + ship.getSize() > getSize()) {
+            if (firstCoords.getX() + ship.getSize() > getSize()) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean locationIsClear(Ship ship, int firstX, int firstY, boolean northToSouth) {
+    private boolean locationIsClear(Ship ship, Coordinates firstCoords, boolean northToSouth) {
         for (int i = 0; i < ship.getSize(); i++) {
+            Coordinates testCoords;
             if (northToSouth) {
-                if (gameGrid[firstX][firstY + i].equals(GridSpace.SHIP)) {
-                    return false;
-                }
+                testCoords = new Coordinates(firstCoords.getX(), firstCoords.getY() + 1);
             } else {
-                if (gameGrid[firstX + i][firstY].equals(GridSpace.SHIP)) {
-                    return false;
-                }
+                testCoords = new Coordinates(firstCoords.getX() + 1, firstCoords.getY());
+            }
+            if (gameGrid.get(testCoords).equals(GridSpace.SHIP)) {
+                return false;
             }
         }
         return true;
     }
 
-    private void placeShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
+    private void placeShip(Ship ship, Coordinates firstCoords, boolean northToSouth) {
         for (int i = 0; i < ship.getSize(); i++) {
+            Coordinates coordsToSet;
             if (northToSouth) {
-                gameGrid[firstX][firstY + i] = (GridSpace.SHIP);
+                coordsToSet = new Coordinates(firstCoords.getX(), firstCoords.getY() + i);
             } else {
-                gameGrid[firstX + i][firstY] = (GridSpace.SHIP);
+                coordsToSet = new Coordinates(firstCoords.getX() + i, firstCoords.getY());
             }
+            gameGrid.put(coordsToSet, GridSpace.SHIP);
         }
-        ship.placeShip(firstX, firstY, northToSouth);
+        ship.placeShip(firstCoords, northToSouth);
     }
 
-    public GridSpace targetCoordinates(int x, int y) {
+    public GridSpace targetCoordinates(Coordinates coords) {
 
         GridSpace spaceVal = GridSpace.INVALID;
-        if (validCoordinates(x, y)) {
-            spaceVal = gameGrid[x][y];
+        if (validCoordinates(coords)) {
+            spaceVal = gameGrid.get(coords);
         }
         return spaceVal;
     }
 
-    public void updateGridSpace(int x, int y, boolean hit) {
+    public void updateGridSpace(Coordinates coords, boolean hit) {
         if (hit) {
-            gameGrid[x][y] = GridSpace.HIT;
+            gameGrid.put(coords, GridSpace.HIT);
         } else {
-            gameGrid[x][y] = GridSpace.MISS;
+            gameGrid.put(coords, GridSpace.MISS);
         }
     }
 
-    public boolean validCoordinates(int x, int y) {
+    public boolean validCoordinates(Coordinates coords) {
 
-        if (x < 0 || x >= size) {
+        if (coords.getX() < 0 || coords.getX() >= size) {
             return false;
         }
 
-        return y >= 0 && y < size;
-    }
-
-    public boolean validCoordinates(List<Integer> coords) {
-        return coords.size() == 2 && validCoordinates(coords.get(0), coords.get(1));
+        return coords.getY() >= 0 && coords.getY() < size;
     }
 
     public String gridToString() {
@@ -122,7 +121,8 @@ public class Grid {
                 gridString += " ";
             }
             for (int j = 0; j < size; j++) {
-                gridString += gridCode(gameGrid[j][i]) + " ";
+                Coordinates coords = new Coordinates(j, i);
+                gridString += gridCode(gameGrid.get(coords)) + " ";
             }
             if (i < 9) {
                 gridString += " ";

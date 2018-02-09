@@ -70,7 +70,7 @@ public class Battleships {
                 playerInterface.displayAction(players.get(turnPlayer).getTargetGridString());
             }
 
-            int[] guess = players.get(turnPlayer).takeTurn();
+            Coordinates guess = players.get(turnPlayer).takeTurn();
 
             playerInterface.displayAction(playerInterface.coordinateString(guess));
 
