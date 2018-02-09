@@ -1,7 +1,6 @@
 package AdvancedExercises.Battleships;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ShipSet {
 

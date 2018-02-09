@@ -26,10 +26,10 @@ public class Human extends Player {
                 Coordinates coordinates = playerInterface.convertCoordinates(playerInput[0]);
                 String orientationString = playerInterface.setOrientation(playerInput[1]);
 
-                if (orientationString.equalsIgnoreCase("invalid")){
+                if ("invalid".equalsIgnoreCase(orientationString)){
                     System.out.println("Invalid orientation. Must type H for horizontal or V for vertical.");
                 } else {
-                    boolean orientation = orientationString.equalsIgnoreCase("v");
+                    boolean orientation = "v".equalsIgnoreCase(orientationString);
                     boolean placed = shipGrid.checkLocationAndPlaceShip(nextShipToPlace, coordinates, orientation);
                     if (!placed) {
                         System.out.println("Invalid ship placement");

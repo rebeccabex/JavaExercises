@@ -1,7 +1,6 @@
 package AdvancedExercises.Battleships;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Grid {
 

@@ -5,11 +5,9 @@ import java.util.Scanner;
 public class CLInterface implements PlayerInterface {
 
     private Scanner reader;
-    private CommandParser commandParser;
 
     public CLInterface() {
         reader = new Scanner(System.in);
-        commandParser = new CommandParser();
         setDelimiter("\n");
     }
 
