@@ -30,7 +30,7 @@ public class Human extends Player {
                     System.out.println("Invalid orientation. Must type H for horizontal or V for vertical.");
                 } else {
                     boolean orientation = orientationString.equalsIgnoreCase("v");
-                    boolean placed = shipGrid.placeShip(nextShipToPlace, coordinates[0], coordinates[1], orientation);
+                    boolean placed = shipGrid.checkLocationAndPlaceShip(nextShipToPlace, coordinates[0], coordinates[1], orientation);
                     if (!placed) {
                         System.out.println("Invalid ship placement");
                     }

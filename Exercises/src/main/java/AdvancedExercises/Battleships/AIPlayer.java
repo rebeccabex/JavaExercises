@@ -11,13 +11,15 @@ public class AIPlayer extends Player {
     private ArrayList<int[]> targetArea;
     private ArrayList<int[]> priorityTargetArea;
     private int[] lastHit;
+    private int pause;
 
-    public AIPlayer(int playerNo, String name, int gridSize) {
+    public AIPlayer(int playerNo, String name, int gridSize, int pause) {
         super(playerNo, name, gridSize);
         toSearch = new ArrayList<>();
         targetArea = new ArrayList<>();
         priorityTargetArea = new ArrayList<>();
         lastHit = new int[] {-1, -1};
+        this.pause = pause;
         initToSearch(gridSize);
     }
 
@@ -34,8 +36,6 @@ public class AIPlayer extends Player {
     @Override
     public boolean setup() {
 
-        System.out.println("AI is placing its ships");
-
         Ship nextShipToPlace = nextShipToPlace();
 
         while (nextShipToPlace != null) {
@@ -44,11 +44,9 @@ public class AIPlayer extends Player {
             int xCoord = randGen.getRandomInt(shipGrid.getSize());
             int yCoord = randGen.getRandomInt(shipGrid.getSize());
 
-            System.out.println(xCoord + ", " + yCoord);
-
             boolean orientation = randGen.getRandomInt(2) == 0;
 
-            shipGrid.placeShip(nextShipToPlace, xCoord, yCoord, orientation);
+            shipGrid.checkLocationAndPlaceShip(nextShipToPlace, xCoord, yCoord, orientation);
 
             nextShipToPlace = nextShipToPlace();
         }
@@ -58,12 +56,13 @@ public class AIPlayer extends Player {
     @Override
     public int[] takeTurn() {
 
-//        try {
-//            Thread.sleep(2500);
-//        } catch (InterruptedException e) {
-//            System.out.println("Failed to sleep");
-//        }
-
+        if (pause != 0) {
+            try {
+                Thread.sleep(pause);
+            } catch (InterruptedException e) {
+                System.out.println("Failed to sleep");
+            }
+        }
         int[] playerGuess = {-1, -1};
 
         try {

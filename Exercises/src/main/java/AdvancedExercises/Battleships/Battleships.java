@@ -40,13 +40,13 @@ public class Battleships {
                 player2 = new Human(2, "Human", gridSize, playerInterface);
                 break;
             case "3":
-                player1 = new AIPlayer(1, "AI 1", gridSize);
-                player2 = new AIPlayer(2, "AI 2", gridSize);
+                player1 = new AIPlayer(1, "AI 1", gridSize, 0);
+                player2 = new AIPlayer(2, "AI 2", gridSize, 0);
                 break;
             case "2":
             default:
                 player1 = new Human(1, "Human", gridSize, playerInterface);
-                player2 = new AIPlayer(2, "AI 1", gridSize);
+                player2 = new AIPlayer(2, "AI 1", gridSize, 1500);
         }
 
         player1.setup();

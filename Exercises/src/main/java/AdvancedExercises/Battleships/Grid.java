@@ -20,14 +20,26 @@ public class Grid {
         }
     }
 
-    public boolean placeShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
+    public boolean checkLocationAndPlaceShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
 
-        // check input x and y are in grid
+        if (shipFitsOnGrid(ship, firstX, firstY, northToSouth)) {
+            return false;
+        }
+
+        if (!locationIsClear(ship, firstX, firstY, northToSouth)) {
+            return false;
+        }
+
+        placeShip(ship, firstX, firstY, northToSouth);
+
+        return true;
+    }
+
+    private boolean shipFitsOnGrid(Ship ship, int firstX, int firstY, boolean northToSouth) {
         if (!validCoordinates(firstX, firstY)) {
             return false;
         }
 
-        // check entirety of ship is in grid
         if (northToSouth) {
             if (firstY + ship.getSize() > getSize()) {
                 return false;
@@ -37,8 +49,10 @@ public class Grid {
                 return false;
             }
         }
+        return true;
+    }
 
-        // check there is nothing already there where ship will be placed
+    private boolean locationIsClear(Ship ship, int firstX, int firstY, boolean northToSouth) {
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
                 if (gameGrid[firstX][firstY + i].equals(GridSpace.SHIP)) {
@@ -50,8 +64,10 @@ public class Grid {
                 }
             }
         }
+        return true;
+    }
 
-        // place ship on grid
+    private void placeShip(Ship ship, int firstX, int firstY, boolean northToSouth) {
         for (int i = 0; i < ship.getSize(); i++) {
             if (northToSouth) {
                 gameGrid[firstX][firstY + i] = (GridSpace.SHIP);
@@ -59,11 +75,7 @@ public class Grid {
                 gameGrid[firstX + i][firstY] = (GridSpace.SHIP);
             }
         }
-
-        // sets ship's coordinates
         ship.placeShip(firstX, firstY, northToSouth);
-
-        return true;
     }
 
     public GridSpace targetCoordinates(int x, int y) {
